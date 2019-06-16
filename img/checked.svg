@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 29.781 29.781">
+  <g id="checked" transform="translate(0 0)">
+    <circle id="Elipse_22" data-name="Elipse 22" cx="14.891" cy="14.891" r="14.891" transform="translate(0 0)" fill="#fec52b"/>
+    <g id="Grupo_390" data-name="Grupo 390" transform="translate(5.003 7.351)">
+      <path id="Caminho_208" data-name="Caminho 208" d="M95.464,206.106a1.759,1.759,0,0,1,0,2.443L94.1,209.911a1.759,1.759,0,0,1-2.443,0L85.693,203.9a1.759,1.759,0,0,1,0-2.443l1.362-1.362a1.759,1.759,0,0,1,2.443,0Z" transform="translate(-85.2 -195.231)" fill="#fff"/>
+      <path id="Caminho_209" data-name="Caminho 209" d="M175.227,125.693a1.759,1.759,0,0,1,2.443,0l1.362,1.362a1.759,1.759,0,0,1,0,2.443L168.7,139.785a1.759,1.759,0,0,1-2.443,0l-1.362-1.362a1.759,1.759,0,0,1,0-2.443Z" transform="translate(-159.75 -125.2)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

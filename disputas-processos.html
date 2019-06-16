@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <title>Licitanet - Licitações Online</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/disputas-processos.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <header id="header" class="py-3">
+        <div class="container">
+            <nav id="navbar" class="navbar navbar-expand-lg navbar-light px-0">
+                <a class="navbar-brand" href="./index.html"><img src="./img/Logo - Branca.svg"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#licitanetNavbar"
+                    aria-controls="licitanetNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="licitanetNavbar">
+                    <ul class="navbar-nav ml-auto text-white">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./sobre.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">Ver disputas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#planos">Planos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html#grafico">Gráfico</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://licitanet.com.br/pe/index.php">
+                                <button
+                                    class="nav-link btn btn-warning sistemaButton text-uppercase font-weight-bold text-white"
+                                    type="button" href="#">
+                                    Acessar sistema
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-3">
+            <ul class="nav nav-pills mb-3 nav-justify nav-fill" id="processosDisputas" role="tablist">
+                <li class="nav-item text-left">
+                    <a class="nav-link active pl-0" id="pills-processos-tab" data-toggle="pill" href="#pills-processos"
+                        role="tab" aria-controls="pills-processos" aria-selected="true">Processos</a>
+                </li>
+                <li class="nav-item disputas">
+                    <a class="nav-link pl-0" id="pills-disputas-tab" data-toggle="pill" href="#pills-disputas"
+                        role="tab" aria-controls="pills-disputas" aria-selected="false">Sala de
+                        disputas</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-4" id="processorDisputasContent">
+                <div class="tab-pane fade show active" id="pills-processos" role="tabpanel"
+                    aria-labelledby="pills-processos-tab">
+                    <p class="qanelas">
+                        Na aba Processos você poderá utilizar o filtro para pesquisas, fazer download dos editais e
+                        ainda visualizar todos os andamentos processuais, sem a necessidade de senha e totalmente
+                        gratuito.
+                    </p>
+
+                    <div id="modal-avisos"></div>
+
+                    <div class="mt-5 px-5 py-4 box" id="busca-box">
+                        <h3>
+                            Encontre seu processo aqui
+                        </h3>
+
+
+                        <div class="form-row align-items-end mt-4">
+                            <div class="col-md-4">
+                                <label for="tipoBusca">Buscar por:</label>
+                                <select name="tipoBusca" onchange="trocaCampoBusca(this.value)" id="tipoBusca"
+                                    class="form-control">
+                                    <option value="1">Número do Pregão</option>
+                                    <option value="2">Objeto</option>
+                                    <option value="3">Órgão Público</option>
+                                    <option selected value="4" selected>Início Disputa</option>
+                                    <option value="5">Publicação</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mt-3 mt-md-0" id="campo-texto">
+                                <input type="text" class="form-control searchInput" placeholder="Pesquisar">
+                            </div>
+
+                            <div class="col-md-6 mt-3 mt-md-0" id="campo-data">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="dataInicio">Publicação</label>
+                                        <input type="date" id="dataInicio" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="dataFim">Até</label>
+                                        <input type="date" id="dataFim" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 mt-3 mt-md-0">
+                                <button id="buttonBusca"
+                                    class="btn btn-primary buttonForm text-uppercase font-weight-bold w-100">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs navbar-nav-scroll mt-5" id="tipoProcesso" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="publicados-tab" data-toggle="tab" href="#publicados"
+                                role="tab" aria-controls="publicados" aria-selected="true">Publicados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="homologacao-tab" data-toggle="tab" href="#homologacao" role="tab"
+                                aria-controls="homologacao" aria-selected="false">Ag. homologação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="revogados-tab" data-toggle="tab" href="#revogados" role="tab"
+                                aria-controls="revogados" aria-selected="false">Desertos / revogados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="homologados-tab" data-toggle="tab" href="#homologados" role="tab"
+                                aria-controls="homologados" aria-selected="false">Homologados</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="tipoProcessoContent">
+                        <div class="tab-pane fade show active py-3" id="publicados" role="tabpanel"
+                            aria-labelledby="publicados-tab">
+                            <!--  IMPLEMTANDO JS-->
+                            <div id="layout-vazio">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            processos publicados neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="processo-publicado"></div>
+                            <nav>
+                                <ul id="paginacao1"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="homologacao" role="tabpanel"
+                            aria-labelledby="homologacao-tab">
+
+                            <div id="layout-vazio-aguardando-homologacao">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            processos aguardando homologação neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="processo-aguardando-homologacao"></div>
+
+                            <nav>
+                                <ul id="paginacao2"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="revogados" role="tabpanel" aria-labelledby="revogados-tab">
+
+                            <div id="layout-vazio-revogado">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            processos revogados neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="processo-revogado"></div>
+                            <nav>
+                                <ul id="paginacao3"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="homologados" role="tabpanel"
+                            aria-labelledby="homologados-tab">
+
+                            <div id="layout-vazio-homologado">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            processos homologados neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="processo-homologados"></div>
+
+                            <nav>
+                                <ul id="paginacao4"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-disputas" role="tabpanel" aria-labelledby="pills-disputas-tab">
+                    <p class="qanelas">
+                        Na aba Sala de Disputas você poderá visualizar todos os lances ofertados em tempo real,
+                        acompanhar as mensagens do chat, ter acesso ao relatório da classificação, resultado parcial,
+                        proposta inicial, e ainda, imprimir a Ata Parcial de todos os atos realizados no certame.
+                    </p>
+
+                    <div id="modal-avisos-disputa"></div>
+
+
+                    <div class="mt-5 px-5 py-4 box" id="busca-box-disputa">
+                        <h3>
+                            Encontre sua Disputa aqui
+                        </h3>
+
+
+                        <div class="form-row align-items-end mt-4">
+                            <div class="col-md-4">
+                                <label for="tipoBuscaDisputa">Buscar por:</label>
+                                <select name="tipoBuscaDisputa" onchange="trocaCampoBuscaDisputa(this.value)"
+                                    id="tipoBuscaDisputa" class="form-control">
+                                    <option value="1">Número do Pregão</option>
+                                    <option value="2">Objeto</option>
+                                    <option value="3">Órgão Público</option>
+                                    <option selected value="4" selected>Início Disputa</option>
+                                    <option value="5">Publicação</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mt-3 mt-md-0" id="campo-texto-disputa">
+                                <input type="text" class="form-control searchInputDisputa" placeholder="Pesquisar">
+                            </div>
+
+                            <div class="col-md-6 mt-3 mt-md-0" id="campo-data-disputa">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="dataInicioDisputa">Publicação</label>
+                                        <input type="date" id="dataInicioDisputa" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="dataFimDisputa">Até</label>
+                                        <input type="date" id="dataFimDisputa" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 mt-3 mt-md-0">
+                                <button id="buttonBuscaDisputa"
+                                    class="btn btn-primary buttonForm text-uppercase font-weight-bold w-100">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav navbar-nav-scroll nav-tabs mt-5" id="tipoDisputa" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="emDisputa-tab" data-toggle="tab" href="#emDisputa" role="tab"
+                                aria-controls="emDisputa" aria-selected="true">Em disputa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="homologacaoDisputa-tab" data-toggle="tab" href="#homologacaoDisputa"
+                                role="tab" aria-controls="homologacaoDisputa" aria-selected="false">Ag. homologação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="revogadosDisputa-tab" data-toggle="tab" href="#revogadosDisputa"
+                                role="tab" aria-controls="revogadosDisputa" aria-selected="false">Desertos /
+                                revogados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="homologadosDisputa-tab" data-toggle="tab" href="#homologadosDisputa"
+                                role="tab" aria-controls="homologadosDisputa" aria-selected="false">Homologados</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="tipoDisputaContent">
+                        <div class="tab-pane fade show active py-3" id="emDisputa" role="tabpanel"
+                            aria-labelledby="emDisputa-tab">
+
+                            <div id="layout-vazio-disputa">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            disputas em andamento neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="em-disputa"></div>
+
+                            <nav>
+                                <ul id="paginacao5"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="homologacaoDisputa" role="tabpanel"
+                            aria-labelledby="homologacaoDisputa-tab">
+                            <div id="layout-aguardando-homologacao-disputa">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            disputas aguardando homologação neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="aguardando-homologacao-disputa"></div>
+
+                            <nav>
+                                <ul id="paginacao6"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="revogadosDisputa" role="tabpanel"
+                            aria-labelledby="revogadosDisputa-tab">
+
+                            <div id="layout-vazio-revogado-disputa">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            disputas revogadas neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="processo-revogado-disputa"></div>
+
+
+                            <nav>
+                                <ul id="paginacao7"></ul>
+                            </nav>
+                        </div>
+
+                        <div class="tab-pane fade py-3" id="homologadosDisputa" role="tabpanel"
+                            aria-labelledby="homologadosDisputa-tab">
+
+                            <div id="layout-vazio-homologado-disputa">
+                                <div class="col-md-12 layout-empty">
+                                    <div class="text-center">
+                                        <div class="img-not-found"></div>
+                                        <p style="font-size: 32px;" class="montserrat text-uppercase m-0">Não há
+                                            disputas Homologadas neste período</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="processo-homologados-disputa"></div>
+
+                            <nav>
+                                <ul id="paginacao8"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-5">
+		<div class="container">
+			<div class="d-flex align-items-center">
+				<img src="./img/logo (Símbolo).png" height="80">
+
+				<div class="w-100">
+					<div class="border-bottom w-100 mt-5 mb-3 mx-auto"></div>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row redesSociais ml-3 ml-md-0">
+								<div class="col-4">
+									<div class="row align-items-center handOver" id="open-instagram">
+										<img src="./img/instagram.svg" height="40" class="mr-3">
+										<span class="text-uppercase font-weight-bold qanelas">Instagram</span>
+									</div>
+								</div>
+
+								<div class="col-4">
+									<div class="row align-items-center handOver" id="open-facebook">
+										<img src="./img/facebook.svg" height="40" class="mr-3">
+										<span class="text-uppercase font-weight-bold qanelas">Facebook</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-4">
+				<div class="col-lg-3">
+					<div class="d-flex align-items-center handOver" id="open-skype">
+						<img src="./img/skype.svg" class="mr-3" height="40">
+
+						<div>
+							<p class="mb-0 tituloRodape">Skype</p>
+							<p class="mb-0 descricaoRodape">Adicionar aos contatos</p>
+						</div>
+					</div>
+
+					<div class="d-flex align-items-center mt-4 handOver" id="open-whatsapp">
+						<img src="./img/whatsapp.svg" class="mr-3" height="40">
+
+						<div>
+							<p class="mb-0 tituloRodape">Whatsapp</p>
+							<p class="mb-0 descricaoRodape">(34) 3014-6633</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-2 mt-4 mt-lg-0">
+					<div class="d-flex flex-column justify-content-between h-100 align-items-start">
+						<a href="./sobre.html">
+							<button class="btn btn-link">Sobre a Licitanet</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Processos</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Sala de disputas</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-2 mt-4 mt-lg-0">
+					<div class="d-flex flex-column justify-content-between h-100 align-items-start">
+						<a href="./adesao-fornecedor.html">
+							<button class="btn btn-link">Fornecedores</button>
+						</a>
+
+						<a href="./adesao-comprador.html">
+							<button class="btn btn-link">Compradores</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Sociedade</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3 mt-4 mt-lg-0">
+					<div class="d-flex justify-content-center">
+						<div class="text-left">
+							<p class="qanelas">Horário de funcionamento</p>
+							<p class="qanelas">8:30 às 18:00</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-6 col-lg-2 mt-4 mt-lg-0 text-center">
+					<img src="./img/Selo.png" height="150">
+				</div>
+			</div>
+		</div>
+
+		<div style="background: #3A85F7;" class="mt-4">
+			<div class="container py-4">
+				<div class="row justify-content-between">
+					<div class="col-lg-7">
+						<div class="d-flex align-items-center">
+							<img src="./img/phone-call.svg" height="30" class="mr-3">
+							<p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B;"
+								class="montserrat font-weight-bold m-0">
+								Telefones:</p>
+						</div>
+
+						<div class="mt-4 d-flex justify-content-between">
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 3014-6633 / 3236-7571
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 99807-6633 (Pregoeiros)
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 99678-7950 (Fornecedores)
+							</p>
+						</div>
+					</div>
+
+					<div class="col-lg-4 mt-4 mt-lg-0">
+						<div class="d-flex align-items-center">
+							<img src="./img/phone-call.svg" height="30" class="mr-3">
+							<p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B;"
+								class="montserrat font-weight-bold m-0">
+								E-mails:</p>
+						</div>
+
+						<div class="mt-4 d-flex justify-content-between">
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								contato@licitanet.com.br
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								financeiro@licitanet.com.br
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="background: #333333;">
+			<div class="container py-2">
+				<div class="d-flex justify-content-between">
+					<p class="m-0 text-white" style="font-size: 12px !important;">&copy; 2017 - Licitanet. Todos os
+						direitos
+						reservados</p>
+					<p class="m-0 text-white" style="font-size: 12px !important;">Site desenvolvido pela Studio 23 <img
+							src="./img/Grupo 542.svg" height="20" class="ml-3"></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./js/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="./js/disputas-processos.js"></script>
+</body>
+
+</html>

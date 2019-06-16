@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95" height="95" viewBox="0 0 95 95">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="95" height="95" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_754" data-name="Grupo 754" transform="translate(-1268 -494)">
+    <g id="Grupo_459" data-name="Grupo 459">
+      <g id="Grupo_755" data-name="Grupo 755">
+        <g id="Componente_1_1" data-name="Componente 1 – 1" transform="translate(1268 494)" clip-path="url(#clip-path)">
+          <g id="Elipse_35" data-name="Elipse 35" fill="#fec52b" stroke="#717171" stroke-width="5">
+            <circle cx="47.5" cy="47.5" r="47.5" stroke="none"/>
+            <circle cx="47.5" cy="47.5" r="45" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <g id="Grupo_757" data-name="Grupo 757">
+        <g id="Grupo_756" data-name="Grupo 756">
+          <text id="_1" data-name="1" transform="translate(1316 563)" fill="#717171" font-size="52" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="-14.955" y="0">1</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

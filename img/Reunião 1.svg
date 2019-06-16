@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1197.618" viewBox="0 0 1920 1197.618">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 2000 2000">
+      <image width="2000" height="2000" xlink:href="Reuni%C3%A3o%201-image.jpg"/>
+    </pattern>
+  </defs>
+  <rect id="Reunião_1" data-name="Reunião 1" width="1920" height="1197.618" opacity="0.78" fill="url(#pattern)"/>
+</svg>

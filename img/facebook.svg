@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="63.502" height="63.502" viewBox="0 0 63.502 63.502">
+  <defs>
+    <linearGradient id="linear-gradient" y1="-0.028" x2="1.116" y2="1.109" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fec52b"/>
+      <stop offset="1" stop-color="#ffaa20"/>
+    </linearGradient>
+  </defs>
+  <g id="facebook" transform="translate(0.001)">
+    <path id="Exclusão_1" data-name="Exclusão 1" d="M31.75,63.5A31.759,31.759,0,0,1,19.391,2.5,31.759,31.759,0,0,1,44.109,61.007,31.552,31.552,0,0,1,31.75,63.5ZM21.4,25.7v7.294h4.082V53.75h8.584V32.994h5.666l.75-7.288H34.068V21.413a1.753,1.753,0,0,1,1.821-1.988H40.5v-7.08l-6.359-.027c-6.386,0-8.661,4.474-8.661,8.662V25.7Z" transform="translate(0)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

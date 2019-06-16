@@ -1,0 +1,224 @@
+p {
+  margin: 0 !important;
+}
+
+ul#processosDisputas li a.active {
+  opacity: 1 !important;
+  background: inherit !important;
+}
+
+ul#processosDisputas li a {
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-weight: bold !important;
+  letter-spacing: 13px;
+  color: #717171 !important;
+  opacity: 0.31;
+  font-size: 42px !important;
+  padding-bottom: 25px;
+  display: inline-block;
+  position: relative;
+}
+
+ul#processosDisputas li a.active::after {
+  content: "";
+  width: 100%;
+  height: 6px;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 9;
+  background: linear-gradient(to right, #717171 55%, transparent 45%);
+}
+
+ul#tipoProcesso, ul#tipoDisputa {
+  border-bottom: 2px solid #717171;
+}
+
+ul#tipoProcesso li a.active, ul#tipoDisputa li a.active {
+  background: #FEC52B;
+  border-bottom: 1.5px solid #717171 !important;
+}
+
+ul#tipoProcesso li a, ul#tipoDisputa li a {
+  color: #717171 !important;
+  font-family: Qanelas;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid #717171;
+  border-bottom: none;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px 20px;
+}
+
+ul#tipoProcesso li, ul#tipoDisputa li {
+  margin-right: 5px;
+}
+
+body,
+html,
+main {
+  background: #f9f9f9 !important;
+}
+
+#navbar li {
+  padding: 15px 30px !important;
+  text-transform: uppercase;
+  padding-right: 0 !important;
+  font-family: Qanelas;
+}
+
+#header {
+  background: #3a85f7;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
+}
+
+.sistemaButton {
+  padding: 5px 30px !important;
+  border-radius: 35px !important;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
+  font-family: Qanelas;
+}
+
+.box {
+  border-radius: 20px;
+  background: #fff !important;
+  font-family: Qanelas !important;
+  box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.16);
+}
+
+.form-control,
+.buttonForm {
+  border-radius: 25px !important;
+  height: 50px !important;
+  font-family: Qanelas !important;
+}
+
+.selectRelatorios {
+  height: inherit !important;
+}
+
+.navbar-nav-scroll {
+  white-space: nowrap; /* [1] */
+  flex-wrap: nowrap !important;
+  overflow-x: auto; /* [2] */
+  -webkit-overflow-scrolling: touch; /* [3] */
+  -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ }
+
+/* [5] */
+.navbar-nav-scroll::-webkit-scrollbar {
+  display: none; }
+
+.form-control {
+  background: rgba(113, 113, 113, 0.06) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.border-right-2 {
+  border-right: 2px solid #717171 !important;
+}
+
+ul.pagination li {
+  font-family: Qanelas;
+  border: 2px solid #717171;
+  border-radius: 5px;
+  text-align: center;
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+} 
+
+ul.pagination li a {
+  color: #717171 !important;
+  background: none !important;
+  font-size: 18px !important;
+  border: none;
+}
+
+ul.pagination .page-item.active {
+  font-weight: bold;
+  background: #FEC52B !important;
+}
+
+ul.pagination li a:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+ul.pagination .no-border {
+  border: none !important;
+}
+
+.searchInput {
+  background: rgba(113, 113, 113, 0.06) url("../img/magnifying-glass.svg") no-repeat center right !important;
+  background-size: 20px !important;
+  background-position-x: 96.5% !important;
+  padding-right: 40px !important;
+}
+
+.layout-empty {
+  min-height: 60vh;
+  width: 100%;
+}
+
+.img-not-found {
+  margin-top: 30px;
+  background: url("../img/not_found.svg")  no-repeat center;
+  background-size: 200px;
+  width: 100%;
+  height: 30vh;
+}
+
+.disputas {
+  text-align: right;
+}
+
+.tituloRodape {
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #717171;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.descricaoRodape {
+  font-size: 16px;
+  color: #717171;
+  font-family: Qanelas;
+}
+
+footer .btn-link {
+  font-family: Qanelas;
+  color: #717171 !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 991.98px) {
+  ul#processosDisputas li a {
+    font-size: 32px !important;
+  }
+
+  .disputas {
+    text-align: left !important;
+    padding-left: 0 !important;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+
+  ul.pagination li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .redesSociais {
+    justify-content: flex-end !important;
+  }
+}

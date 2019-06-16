@@ -1,0 +1,118 @@
+#border-bottom {
+  border-bottom: 5px solid #717171 !important;
+}
+
+#header {
+  background: #3a85f7;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
+}
+
+#navbar li {
+  font-family: Qanelas;
+  padding: 15px 0 15px 30px !important;
+  text-transform: uppercase;
+}
+
+.gradientBackground {
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.8) 55%, #0000 0%);
+  min-height: 450px;
+}
+
+.missao {
+  background: url(../img/missao.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.missaoVisaoValoresBox {
+  border-radius: 15px;
+  box-shadow: 7px 11px 15px rgba(0, 0, 0, 0.16);
+  min-height: 450px;
+}
+
+.reverseGradientBackground {
+  background: linear-gradient(75deg, #0000 46%, rgba(255, 255, 255, 0.8) 0);
+  min-height: 450px;
+}
+
+.sistemaButton {
+  border-radius: 35px !important;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
+  font-family: Qanelas;
+  padding: 5px 30px !important;
+}
+
+.slider-img {
+  height: auto;
+  max-width: 60%;
+}
+
+.valores {
+  background: url(../img/valores.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.visao {
+  background: url(../img/visao.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.tituloRodape {
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #717171;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.descricaoRodape {
+  font-size: 16px;
+  color: #717171;
+  font-family: Qanelas;
+}
+
+footer .btn-link {
+  font-family: Qanelas;
+  color: #717171 !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 575.98px) {
+  .gradientBackground, .reverseGradientBackground {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .gradientBackground, .reverseGradientBackground {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .gradientBackground, .reverseGradientBackground {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+@media (min-width: 1200px) {
+  .redesSociais {
+    justify-content: flex-end !important;
+  }
+}

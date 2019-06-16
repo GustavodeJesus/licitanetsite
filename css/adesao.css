@@ -1,0 +1,345 @@
+.segmento {
+  background: #f7f7f7;
+  border-radius: 20px;
+}
+
+#tipoSegmento {
+  background: url("../img/magnifying-glass.svg") no-repeat center right;
+  background-size: 20px !important;
+  background-position-x: 96.5%;
+  padding-right: 40px !important;
+}
+
+#navbar li {
+  padding: 15px 30px !important;
+  text-transform: uppercase;
+  padding-right: 0 !important;
+  font-family: Qanelas;
+}
+
+#header {
+  background: #3a85f7;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
+}
+
+.sistemaButton {
+  padding: 5px 30px !important;
+  border-radius: 35px !important;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
+  font-family: Qanelas;
+}
+
+.form-control,
+.buttonForm {
+  border-radius: 25px !important;
+  height: 50px !important;
+  font-family: Qanelas !important;
+}
+
+.form-control {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.concluirButton {
+  width: 230px;
+  text-transform: uppercase;
+  font-weight: bold !important;
+}
+
+p,
+label,
+legend {
+  font-family: Qanelas !important;
+  color: #717171 !important;
+}
+
+.plano {
+  font-family: Montserrat !important;
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.16);
+  padding: 20px 20px;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.plano:hover {
+  cursor: pointer;
+}
+
+.numeroDias {
+  font-family: "Montserrat-Black" !important;
+}
+
+.planoSelecionado {
+  background: #3a85f7 !important;
+}
+
+.planoSelecionado p {
+  color: #fff !important;
+}
+
+.boxAmarela {
+  border-radius: 18px;
+  background: #fec52b;
+}
+
+.numeroBoxAmarela {
+  position: absolute;
+  margin-top: -40px;
+  margin-left: -25px;
+}
+
+/**
+  Adicinado para ocultar o indicador padrao do datalist
+*/
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.tituloRodape {
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #717171;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.descricaoRodape {
+  font-size: 16px;
+  color: #717171;
+  font-family: Qanelas;
+}
+
+footer .btn-link {
+  font-family: Qanelas;
+  color: #717171 !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 575.98px) {
+  #tutorial {
+    display: none;
+  }
+
+  .numeroBoxAmarela {
+    margin-left: -10px;
+  }
+
+  .horizontal {
+    display: none;
+  }
+
+  .vertical {
+    display: block;
+  }
+
+  .flexDupla {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flexFluxo {
+    flex-wrap: wrap;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #tutorial {
+    display: none;
+  }
+
+  .numeroBoxAmarela {
+    margin-left: -10px;
+  }
+
+  .horizontal {
+    display: none;
+  }
+
+  .vertical {
+    display: block;
+  }
+
+  .flexFluxo {
+    flex-wrap: wrap;
+  }
+
+  .flexDupla {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #tutorial {
+    display: none;
+  }
+
+  .numeroBoxAmarela {
+    margin-left: -10px;
+  }
+
+  .horizontal {
+    display: none;
+  }
+
+  .vertical {
+    display: block;
+  }
+
+  .flexFluxo {
+    flex-wrap: wrap;
+  }
+
+  .flexDupla {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .horizontal {
+    display: block;
+  }
+
+  .vertical {
+    display: none;
+  }
+
+  .flexFluxo {
+    flex-wrap: nowrap;
+  }
+
+  .boxAmarela {
+    width: 430px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .horizontal {
+    display: block;
+  }
+
+  .vertical {
+    display: none;
+  }
+
+  .flexFluxo {
+    flex-wrap: nowrap;
+  }
+
+  .redesSociais {
+    justify-content: flex-end !important;
+  }
+
+  .boxAmarela {
+    width: 430px;
+  }
+}
+
+
+.cssload-container{
+  position:relative;
+  display: none;
+  width: 100%;
+    height: 60vh;
+    text-align: center;
+}
+	
+.cssload-whirlpool,
+.cssload-whirlpool::before,
+.cssload-whirlpool::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 2px solid rgb(204,204,204);
+	border-left-color: rgb(224,168,0);
+	border-radius: 1748px;
+		-o-border-radius: 1748px;
+		-ms-border-radius: 1748px;
+		-webkit-border-radius: 1748px;
+		-moz-border-radius: 1748px;
+}
+
+.cssload-whirlpool {
+	margin: -44px 0 0 -44px;
+	height: 88px;
+	width: 88px;
+	animation: cssload-rotate 1150ms linear infinite;
+		-o-animation: cssload-rotate 1150ms linear infinite;
+		-ms-animation: cssload-rotate 1150ms linear infinite;
+		-webkit-animation: cssload-rotate 1150ms linear infinite;
+		-moz-animation: cssload-rotate 1150ms linear infinite;
+}
+
+.cssload-whirlpool::before {
+	content: "";
+	margin: -40px 0 0 -40px;
+	height: 77px;
+	width: 77px;
+	animation: cssload-rotate 1150ms linear infinite;
+		-o-animation: cssload-rotate 1150ms linear infinite;
+		-ms-animation: cssload-rotate 1150ms linear infinite;
+		-webkit-animation: cssload-rotate 1150ms linear infinite;
+		-moz-animation: cssload-rotate 1150ms linear infinite;
+}
+
+.cssload-whirlpool::after {
+	content: "";
+	margin: -51px 0 0 -51px;
+	height: 98px;
+	width: 98px;
+	animation: cssload-rotate 2300ms linear infinite;
+		-o-animation: cssload-rotate 2300ms linear infinite;
+		-ms-animation: cssload-rotate 2300ms linear infinite;
+		-webkit-animation: cssload-rotate 2300ms linear infinite;
+		-moz-animation: cssload-rotate 2300ms linear infinite;
+}
+
+
+
+@keyframes cssload-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes cssload-rotate {
+	100% {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes cssload-rotate {
+	100% {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-rotate {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes cssload-rotate {
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}

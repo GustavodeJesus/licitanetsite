@@ -1,0 +1,11 @@
+<svg id="instagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62.917" height="62.917" viewBox="0 0 62.917 62.917">
+  <defs>
+    <linearGradient id="linear-gradient" y1="-0.028" x2="1.116" y2="1.109" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fec52b"/>
+      <stop offset="1" stop-color="#ffaa20"/>
+    </linearGradient>
+  </defs>
+  <path id="Caminho_582" data-name="Caminho 582" d="M47.939,23.88H29.187a5.434,5.434,0,0,0-5.428,5.428V48.06a5.435,5.435,0,0,0,5.428,5.429H47.939a5.435,5.435,0,0,0,5.429-5.429V29.308A5.435,5.435,0,0,0,47.939,23.88ZM38.563,48.432a9.747,9.747,0,1,1,9.748-9.748A9.758,9.758,0,0,1,38.563,48.432ZM48.624,30.953a2.306,2.306,0,1,1,2.306-2.306A2.309,2.309,0,0,1,48.624,30.953Z" transform="translate(-7.105 -7.141)" fill="url(#linear-gradient)"/>
+  <path id="Caminho_583" data-name="Caminho 583" d="M42.478,36.971A5.628,5.628,0,1,0,48.106,42.6,5.635,5.635,0,0,0,42.478,36.971Z" transform="translate(-11.019 -11.056)" fill="url(#linear-gradient)"/>
+  <path id="Caminho_584" data-name="Caminho 584" d="M31.459,0A31.458,31.458,0,1,0,62.917,31.458,31.459,31.459,0,0,0,31.459,0ZM50.382,40.919a9.557,9.557,0,0,1-9.547,9.547H22.082a9.558,9.558,0,0,1-9.547-9.547V22.167a9.558,9.558,0,0,1,9.547-9.547H40.835a9.558,9.558,0,0,1,9.547,9.547Z" fill="url(#linear-gradient)"/>
+</svg>

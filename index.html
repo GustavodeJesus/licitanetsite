@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Licitanet - Licitações Online</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="avisoButtonFloat">
+		<a href="#avisos">
+			<div class="handOver d-flex align-items-center" style="max-width: 300px;">
+				<div style="background: #3a85f7; width: 65px; height: 65px;" class="p-1 text-center rounded-circle">
+					<img src="./img/notificacao.svg" height="50">
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<header class="py-3" id="header">
+		<div class="container">
+
+			<nav id="navbar" class="navbar navbar-expand-lg navbar-light px-0">
+				<a class="navbar-brand" href="#"><img src="./img/Logo.svg"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#licitanetNavbar"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="licitanetNavbar">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="./sobre.html">Sobre</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./disputas-processos.html">Ver disputas</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#planos">Planos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#grafico">Gráfico</a>
+						</li>
+						<li class="nav-item">
+							<a href="https://licitanet.com.br/pe/index.php">
+								<button
+									class="nav-link btn btn-primary text-white sistemaButton font-weight-bold text-uppercase"
+									type="button">Acessar sistema</button>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<section class="row mt-3 mt-lg-0">
+				<div class="col-lg-6">
+					<div class="infoArea" style="display:flex;align-items:center;">
+						<div>
+							<div class="pb-0 pb-lg-5">
+								<p style="font-size: 32px;" class="montserrat text-uppercase m-0">Isso é eficiência</p>
+								<p style="font-size: 50px;" class="montserrat text-uppercase font-weight-bold m-0">Isso
+									é
+									Licitanet</p>
+								<p class="montserrat text-uppercase font-weight-bold m-0">O melhor site de pregões do
+									Brasil
+								</p>
+							</div>
+
+							<a href="#sobre">
+								<button class="btn btn-primary text-uppercase headerButton my-5 mt-lg-0">O que é a
+									Licitanet?</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</header>
+
+	<main>
+		<section id="adesoes" class="mt-2 mt-lg-5">
+			<article class="container">
+				<h1 class="mb-5">Para você</h1>
+
+				<div class="row mt-3 mb-5 pb-5">
+					<div class="boxPlanos col-lg-4">
+						<div class="box h-100 p-5">
+							<div class="text-center mt-4">
+								<img src="./img/Grupo 524.svg" height="90">
+							</div>
+
+							<p class="qanelas text-center textoAmarelo text-uppercase font-weight-bold my-4"
+								style="font-size: 24px;">Fornecedor</p>
+
+							<p class="qanelas">
+								Pessoa Física ou Jurídica interessada em fornecer produtos ou serviços licitados pelas
+								entidades compradoras.
+							</p>
+
+							<div class="text-center mt-4">
+								<a href="./adesao-fornecedor.html">
+									<button class="btn text-white btn-warning">Aderir</button></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxPlanos col-lg-4 mt-3 mt-lg-0">
+						<div class="box h-100 p-5">
+							<div class="text-center mt-4">
+								<img src="./img/skyline (1).svg" height="90">
+							</div>
+
+							<p class="qanelas text-center textoAzul	 text-uppercase font-weight-bold my-4"
+								style="font-size: 24px;">Comprador</p>
+
+							<p class="qanelas textoDescricao">
+								Órgãos Públicos, ONGs, Autarquias e Fundações, com processos para
+								a aquisição de bens e serviços.
+							</p>
+
+							<div class="text-center mt-4">
+								<a class="text-white" href="./adesao-comprador.html">
+									<button class="btn btn-primary">Aderir</button></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxPlanos col-lg-4 mt-3 mt-lg-0">
+						<div class="box h-100 p-5">
+							<div class="text-center mt-4">
+								<img src="./img/team (1).svg" height="90">
+							</div>
+
+							<p class="qanelas text-center text-uppercase font-weight-bold my-4"
+								style="font-size: 24px;">Sociedade</p>
+
+							<p class="qanelas">
+								Qualquer cidadão que queira acompanhar os processos antes, durante ou depois de sua
+								realização.
+							</p>
+
+							<div class="text-center mt-4">
+								<a class="text-white" href="./disputas-processos.html">
+									<button class="btn btn-secondary">Ver processos</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section id="planos" name="planos">
+			<div id="planosLayer">
+				<article class="py-5 container">
+					<h1 class="mb-5 h1White">Nossos planos</h1>
+
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="box grow py-4 text-center">
+								<p style="font-size: 32px; letter-spacing: 5px; font-family: 'Montserrat-Black';"
+									class="textoAzul text-uppercase mt-3">30 dias</p>
+
+								<p style="font-size: 32px; font-weight: light; letter-spacing: 5px;"
+									class="textoAzul montserrat mt-5">R$ 165,41</p>
+
+								<button class="btn btn-warning planosButton">Contratar</button>
+							</div>
+						</div>
+
+						<div class="col-lg-3 mt-3 mt-lg-0">
+							<div class="box grow py-4 text-center">
+								<p style="font-size: 32px; letter-spacing: 5px; font-family: 'Montserrat-Black';"
+									class="textoAzul text-uppercase mt-3">90 dias</p>
+
+								<p style="font-size: 32px; font-weight: light; letter-spacing: 5px;"
+									class="textoAzul montserrat mt-5">R$ 211,58</p>
+
+								<button class="btn btn-warning planosButton">Contratar</button>
+							</div>
+						</div>
+
+						<div class="col-lg-3 mt-3 mt-lg-0">
+							<div class="box grow py-4 text-center">
+								<p style="font-size: 32px; letter-spacing: 5px; font-family: 'Montserrat-Black';"
+									class="textoAzul text-uppercase mt-3">180 dias</p>
+
+								<p style="font-size: 32px; font-weight: light; letter-spacing: 5px;"
+									class="textoAzul montserrat mt-5">R$ 288,71</p>
+
+								<button class="btn btn-warning planosButton">Contratar</button>
+							</div>
+						</div>
+
+						<div class="col-lg-3 mt-3 mt-lg-0">
+							<div class="box grow py-4 text-center">
+								<p style="font-size: 32px; letter-spacing: 5px; font-family: 'Montserrat-Black';"
+									class="textoAzul text-uppercase mt-3">365 dias</p>
+
+								<p style="font-size: 32px; font-weight: light; letter-spacing: 5px;"
+									class="textoAzul montserrat mt-5">R$ 407,15</p>
+
+								<button class="btn btn-warning planosButton">Contratar</button>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="avisos" class="mt-5">
+			<article class="container">
+				<h1 class="mb-5">Avisos</h1>
+				<div class="row" style="height: 520px; overflow-y: auto" id="showAvisos"></div>
+
+				<!-- Modal -->
+				<div id="modal-avisos"></div>
+
+			</article>
+		</section>
+
+
+		<section id="grafico" name="grafico" class="text-white mt-4 py-5">
+			<article class="container">
+				<h1 class="mb-5 h1White">Gráfico</h1>
+
+				<div class="row">
+					<div class="col-lg-3">
+						<p>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid libero consequatur nemo,
+							doloribus culpa saepe molestiae doloremque veritatis esse non magnam eveniet quidem,
+							delectus vitae corrupti eligendi cum tenetur unde? Lorem ipsum dolor sit amet consectetur
+							adipisicing elit. Asperiores libero error deleniti laudantium cupiditate totam neque hic
+							dolores excepturi iusto sapiente veritatis numquam nemo, sequi debitis fugit inventore?
+							Eveniet, rem!
+						</p>
+
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci harum, quo voluptate
+							assumenda fugiat culpa quas quis fuga maxime aliquid ab eveniet quod similique eligendi
+							omnis veniam eius magnam facilis?
+						</p>
+					</div>
+
+					<div class="col-lg-9 mt-4 mt-lg-0 text-right">
+						<canvas id="myChart" height="200"></canvas>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section id="sobre" class="mt-5 py-5">
+			<article class="container">
+				<h1 class="mb-5">O que é a Licitanet?</h1>
+
+				<div class="row align-items-center">
+					<div class="col-lg-4">
+						<p style="font-size: 32px; letter-spacing: 5px;"
+							class="montserrat textoAzul font-weight-bold text-uppercase">Um novo conceito em pregões
+							eletrônicos</p>
+
+						<p class="qanelas my-5">
+							Somos uma empresa privada de Ti especializada em soluções de vanguarda para a atividade
+							comercial business to government (B2G) - "compras do setor público".
+						</p>
+
+						<a class="text-white" href="./sobre.html"><button class="btn btn-warning sobreButton">Saiba
+								mais</button></a>
+					</div>
+
+					<div id="player" class="col-lg-8 mt-3 mt-lg-0 text-right">
+						<iframe id="playerVideo" width="100%" height="380"
+							src="https://www.youtube.com/embed/1wNYRYLSPTo" frameborder="0"
+							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<section class="mt-5">
+			<article class="container">
+				<h1 class="mb-5">Notícias</h1>
+
+				<div class="row">
+					<div class="col-lg-4">
+						<img src="./img/noticia1.jpeg" class="imagemNoticia">
+
+						<p class="qanelas mt-4">
+							A <strong>LICITANET</strong> esteve presente no 3º Encontro - Pregoeiros e Equipes de Apoio de Rondônia, realizada pela ANPPME entre os dias 29 a 31 de maio em Cacoal - RO. Estiveram presentes a Prefeita de Cacoal - Glaucione Rodrigues e Presidente da ANPPME - Fernandes Lucas da Costa. Na oportunidade aconteceu o lançamento da revista da ANPPME.
+						</p>
+					</div>
+
+					<div class="col-lg-4">
+						<img src="./img/noticia2.jpeg" class="imagemNoticia">
+
+						<p class="qanelas mt-4">
+							A <strong>LICITANET</strong>, através de seu CEO Paulo Gustavo, esteve presente ontem (04/04) na Audiência Pública no Ministério da Economia, em debate sobre a proposta que altera as regras do Pregão Eletrônico.
+						</p>
+					</div>
+
+					<div class="col-lg-4">
+						<img src="./img/noticia3.jpeg" class="imagemNoticia">
+
+						<p class="qanelas mt-4">
+							A <strong>LICITANET</strong> estará presente no 3° Congresso Brasileiro de Boas Práticas em Contratos e Compras Públicas como um dos patrocinadores. O evento será realizado em Cuiabá de 17 a 19 de junho.
+						</p>
+					</div>
+				</div>
+			</article>
+		</section>
+	</main>
+
+	<footer class="mt-5">
+		<div class="container">
+			<div class="d-flex align-items-center">
+				<img src="./img/logo (Símbolo).png" height="80">
+
+				<div class="w-100">
+					<div class="border-bottom w-100 mt-5 mb-3 mx-auto"></div>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row redesSociais ml-3 ml-md-0">
+								<div class="col-4">
+									<div class="row align-items-center handOver" id="open-instagram">
+										<img src="./img/instagram.svg" height="40" class="mr-3">
+										<span class="text-uppercase font-weight-bold qanelas">Instagram</span>
+									</div>
+								</div>
+
+								<div class="col-4">
+									<div class="row align-items-center handOver" id="open-facebook">
+										<img src="./img/facebook.svg" height="40" class="mr-3">
+										<span class="text-uppercase font-weight-bold qanelas">Facebook</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-4">
+				<div class="col-lg-3">
+					<div class="d-flex align-items-center handOver" id="open-skype">
+						<img src="./img/skype.svg" class="mr-3" height="40">
+
+						<div>
+							<p class="mb-0 tituloRodape">Skype</p>
+							<p class="mb-0 descricaoRodape">Adicionar aos contatos</p>
+						</div>
+					</div>
+
+					<div class="d-flex align-items-center mt-4 handOver" id="open-whatsapp">
+						<img src="./img/whatsapp.svg" class="mr-3" height="40">
+
+						<div>
+							<p class="mb-0 tituloRodape">Whatsapp</p>
+							<p class="mb-0 descricaoRodape">(34) 3014-6633</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-2 mt-4 mt-lg-0">
+					<div class="d-flex flex-column justify-content-between h-100 align-items-start">
+						<a href="./sobre.html">
+							<button class="btn btn-link">Sobre a Licitanet</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Processos</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Sala de disputas</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-6 col-lg-2 mt-4 mt-lg-0">
+					<div class="d-flex flex-column justify-content-between h-100 align-items-start">
+						<a href="./adesao-fornecedor.html">
+							<button class="btn btn-link">Fornecedores</button>
+						</a>
+
+						<a href="./adesao-comprador.html">
+							<button class="btn btn-link">Compradores</button>
+						</a>
+
+						<a href="./disputas-processos.html">
+							<button class="btn btn-link">Sociedade</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3 mt-4 mt-lg-0">
+					<div class="d-flex justify-content-center">
+						<div class="text-left">
+							<p class="qanelas">Horário de funcionamento</p>
+							<p class="qanelas">8:30 às 18:00</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-6 col-lg-2 mt-4 mt-lg-0 text-center">
+					<img src="./img/Selo.png" height="150">
+				</div>
+			</div>
+		</div>
+
+		<div style="background: #3A85F7;" class="mt-4">
+			<div class="container py-4">
+				<div class="row justify-content-between">
+					<div class="col-lg-7">
+						<div class="d-flex align-items-center">
+							<img src="./img/phone-call.svg" height="30" class="mr-3">
+							<p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B;"
+								class="montserrat font-weight-bold m-0">
+								Telefones:</p>
+						</div>
+
+						<div class="mt-4 d-flex justify-content-between">
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 3014-6633 / 3236-7571
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 99807-6633 (Pregoeiros)
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								(34) 99678-7950 (Fornecedores)
+							</p>
+						</div>
+					</div>
+
+					<div class="col-lg-4 mt-4 mt-lg-0">
+						<div class="d-flex align-items-center">
+							<img src="./img/phone-call.svg" height="30" class="mr-3">
+							<p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B;"
+								class="montserrat font-weight-bold m-0">
+								E-mails:</p>
+						</div>
+
+						<div class="mt-4 d-flex justify-content-between">
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								contato@licitanet.com.br
+							</p>
+
+							<p style="font-size: 14px;" class="m-0 qanelas text-white">
+								financeiro@licitanet.com.br
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="background: #333333;">
+			<div class="container py-2">
+				<div class="d-flex justify-content-between">
+					<p class="m-0 text-white" style="font-size: 12px !important;">&copy; 2017 - Licitanet. Todos os
+						direitos
+						reservados</p>
+					<p class="m-0 text-white" style="font-size: 12px !important;">Site desenvolvido pela Studio 23 <img
+							src="./img/Grupo 542.svg" height="20" class="ml-3"></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/chart.js/dist/Chart.min.js"></script>
+	<script src="js/charts.js"></script>
+	<script src="js/home-landing.js"></script>
+</body>
+
+</html>

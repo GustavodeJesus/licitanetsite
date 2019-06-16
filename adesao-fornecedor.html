@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Licitanet - Licitações Online</title>
+  <link rel="stylesheet" href="css/adesao.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <header id="header" class="py-3">
+    <div class="container">
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="./index.html"><img src="./img/Logo - Branca.svg"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#licitanetNavbar"
+          aria-controls="licitanetNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="licitanetNavbar">
+          <ul class="navbar-nav ml-auto text-white">
+            <li class="nav-item">
+              <a class="nav-link" href="./sobre.html">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./disputas-processos.html">Ver disputas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html#planos">Planos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html#grafico">Gráfico</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://licitanet.com.br/pe/index.php">
+                <button class="nav-link btn btn-warning sistemaButton text-uppercase font-weight-bold text-white"
+                  type="button" href="#">
+                  Acessar sistema
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div style="font-size: 18px;" class="container text-uppercase montserrat mt-4">
+      <a href="index.html" class="text-dark">Home</a>
+      <img src="./img/arrow-point-to-right.svg" class="mx-4" />
+      <span class="textoAmarelo font-weight-bold">Adesão do fornecedor</span>
+    </div>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <section class="py-5">
+            <article class="">
+              <h1 class="font-weight-normal" style="font-size: 30px!important; letter-spacing: 5px;">
+                Quero aderir como <span class="text-warning font-weight-bold"
+                  style="font-size: 30px!important;">fornecedor</span>
+              </h1>
+
+              <h3 class="mt-5">
+                Informe seus dados ou da sua empresa:
+              </h3>
+              <div class="form-row mt-4">
+                <div id="divTipoFornecedor" class="col-lg-6">
+                  <label for="tipoFornecedor">Tipo de fornecedor:</label>
+                  <select onchange="trocaTipoFornecedor(this.value)" name="tipoFornecedor" id="tipoFornecedor"
+                    class="form-control">
+                    <option selected value="1">Pessoa Jurídica</option>
+                    <option value="2">Pessoa Física</option>
+                  </select>
+                </div>
+
+                <div class="col-lg-6" id="cnpj">
+                  <label for="cnpj">CNPJ</label>
+                  <input type="text" id="cnpj" class="form-control cnpj-fornecedor" placeholder="000.000.000/0000-00">
+                  <div class="invalid-feedback">
+                    Insira um CNPJ Válido.
+                  </div>
+                </div>
+
+                <div class="col-lg-6" id="cpf">
+                  <label for="cpf">CPF</label>
+                  <input type="text" id="cpf" class="form-control cpf-fornecedor" placeholder="000.000.000-00">
+                  <div class="invalid-feedback">
+                    Insira um CPF Válido.
+                  </div>
+                </div>
+
+                <legend class="col-form-label col-sm-2 mt-4 pt-0">Sua empresa é?</legend>
+                <div class="col-12 enquadramentos">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="meRadio" name="tipoEmpresa" value="ME" class="custom-control-input">
+                    <label class="custom-control-label" for="meRadio">
+                      ME
+                    </label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="eppRadio" name="tipoEmpresa" value="EPP" class="custom-control-input">
+                    <label class="custom-control-label" for="eppRadio">
+                      EPP
+                    </label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="meiRadio" name="tipoEmpresa" value="MEI" class="custom-control-input">
+                    <label class="custom-control-label" for="meiRadio">
+                      MEI
+                    </label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="grandePorteRadio" name="tipoEmpresa" value="GRANDE PORTE"
+                      class="custom-control-input">
+                    <label class="custom-control-label text-uppercase" for="grandePorteRadio">
+                      Grande porte
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <label for="razaoSocial">Razão Social</label>
+                  <input type="text" id="razaoSocial" class="form-control" placeholder="Informe">
+                  <div class="invalid-feedback">
+                    Insira a Razão Social.
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <label for="nomeFantasia">Nome Fantasia</label>
+                  <input type="text" id="nomeFantasia" class="form-control" placeholder="Informe">
+                  <div class="invalid-feedback">
+                    Insira o Nome Fantasia.
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <label for="naturezaJuridica">Natureza Jurídica</label>
+                  <input type="text" id="naturezaJuridica" class="form-control" placeholder="Informe">
+                  <div class="invalid-feedback">
+                    Insira a Natureza Jurídica.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="cep">CEP:</label>
+                  <input type="text" id="cep" class="form-control cep-fornecedor" placeholder="00000-000">
+                  <div class="invalid-feedback">
+                    Insira o CEP corretamente.
+                  </div>
+                </div>
+
+                <div class="col-lg-10 mt-4">
+                  <label for="logradouro">Rua ou Avenida:</label>
+                  <input type="text" id="logradouro" class="form-control">
+                  <div class="invalid-feedback">
+                    Insira o seu endereço.
+                  </div>
+                </div>
+
+                <div class="col-lg-2 mt-4">
+                  <label for="numero">Nº:</label>
+                  <input type="text" id="numero" class="form-control">
+                  <div class="invalid-feedback">
+                    Insira o N° do seu endereço.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="complemento">Complemento:</label>
+                  <input type="text" id="complemento" class="form-control">
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="bairro">Bairro:</label>
+                  <input type="text" id="bairro" class="form-control">
+                  <div class="invalid-feedback">
+                    Insira o seu bairro.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="estado">Estado:</label>
+                  <div id="estados"></div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="cidade">Cidade:</label>
+                  <div id="cidades"></div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="site">Site:</label>
+                  <input type="text" id="site" class="form-control" placeholder="exemplosite.com.br">
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="telefoneFixo">Telefone fixo:</label>
+                  <input type="text" id="telefoneFixo" class="form-control telefone-fixo" placeholder="(00) 0000-0000">
+                  <div class="invalid-feedback">
+                    Insira o telefone corretamente.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="email">E-mail:</label>
+                  <input type="email" id="email" class="form-control" placeholder="email@site.com.br">
+                  <div class="invalid-feedback">
+                    Insira o E-mail correto.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="site">Telefone Celular:</label>
+                  <input type="text" id="telefoneCelular" class="form-control telefone-celular"
+                    placeholder="(00) 9 0000-0000">
+                  <div class="invalid-feedback">
+                    Insira o celular corretamente.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="nomeUsuario">Nome de Usuário:</label>
+                  <input type="text" id="nomeUsuario" class="form-control" placeholder="Informe">
+                  <div class="invalid-feedback">
+                    Insira o Nome de Usuário.
+                  </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="senhaUsuario">Senha:</label>
+                  <input type="password" id="senhaUsuario" class="form-control" placeholder="Informe">
+                  <div class="invalid-feedback">
+                    Insira a sua senha.
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="mt-5">
+                Quadro societário
+              </h3>
+              <div class="form-row mt-4" id="quadroSocietario"></div>
+
+              <h3 class="mt-5">
+                Anexos
+              </h3>
+              <div class="form-row align-items-end mt-4">
+                <div class="col-lg-6">
+                  <label for="anexoCnpj">Cartão CNPJ</label>
+                  <input type="text" id="anexoCnpj" class="form-control" readonly>
+                  <input style="display: none;" multiple type="file" id="inputCNPJ">
+                </div>
+
+                <div class="col-lg-3 mt-2 mt-lg-0">
+                  <button id="buttonCNPJ" class="btn buttonForm btn-primary w-100">Anexar</button>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="contratoSocial">Contrato social</label>
+                  <input type="text" id="contratoSocial" class="form-control" readonly>
+                  <input style="display: none;" multiple type="file" id="inputContratoSocial">
+                </div>
+
+                <div class="col-lg-3 mt-2 mt-lg-4">
+                  <button id="buttonContratoSocial" class="btn buttonForm btn-primary w-100">Anexar</button>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                  <label for="documentosSocio">Documento(s) Sócios</label>
+                  <input type="text" id="documentosSocio" class="form-control" readonly>
+                  <input style="display: none;" multiple type="file" id="inputDocumentosSocio">
+                </div>
+
+                <div class="col-lg-3 mt-2 mt-lg4">
+                  <button id="buttonDocumentosSocio" class="btn buttonForm btn-primary w-100">Anexar</button>
+                </div>
+              </div>
+
+              <h3 class="mt-5">
+                Segmentos
+              </h3>
+              <div class="form-row align-items-end mt-4">
+                <div class="col-9">
+                  <label for="tipoSegmento">Escolha o seu tipo de segmento</label>
+                  <input id="segmentoEscolhido" name="segmentos" list="segmentos" type="text" id="tipoSegmento"
+                    class="form-control" placeholder="Informe">
+                  <datalist id="segmentos"></datalist>
+                </div>
+
+                <div class="col-lg-3 mt-2 mt-lg-0">
+                  <button id="adicionarSegmento" class="btn buttonForm btn-primary w-100">Adicionar</button>
+                </div>
+
+                <legend class="col-form-label col-sm-4 mt-4 pt-0">Segmentos escolhidos</legend>
+                <div class="col-9" id="segmentosEscolhidos"></div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <div id="tutorial" class="col-lg-4">
+          <section class="py-5">
+            <h3 class="mt-5">
+              Confira o passo a passo para realizar sua adesão, é muito simples!
+            </h3>
+            <article class="mt-5">
+              <img src="./img/Grupo 754-1.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 1</h4>
+
+                <p>
+                  Para a utilização da Plataforma <strong>LICITANET</strong> é necessário o prévio cadastramento do
+                  <strong>FORNECEDOR</strong> através do preenchimento de formulário próprio.
+                </p>
+              </div>
+            </article>
+
+            <article class="mt-5">
+              <img src="./img/Grupo 460.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 2</h4>
+
+                <p>
+                  Preencha todos os campos de forma <strong></strong>correta e completa</strong>, confirmando todos os
+                  dados pois todas as
+                  informações estarão vinculadas e serão utilizadas para todos os procedimentos do nosso Portal.
+                </p>
+              </div>
+            </article>
+
+            <article class="mt-5">
+              <img src="./img/Grupo 461.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 3</h4>
+
+                <p>
+                  Informe um endereço de <strong>e-mail</strong> válido, uma vez que o mesmo será o meio de comunicação,
+                  tanto com a
+                  equipe da Plataforma <strong>LICITANET</strong>, bem como com os órgãos licitantes. Será através dele
+                  que você receberá
+                  o boleto bancário, sua senha e o Termo de Aceite.
+                </p>
+              </div>
+            </article>
+
+            <article class="mt-5">
+              <img src="./img/Grupo 462.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 4</h4>
+
+                <p>
+                  Os documentos deverão ser digitalizados e anexados me campo próprio, podendo os mesmos estarem em zip
+                  ou rar.
+                </p>
+              </div>
+            </article>
+
+            <article class="mt-5">
+              <img src="./img/Grupo 463.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 5</h4>
+
+                <p>
+                  Após preenchido todos os campos, escolha o plano que melhor lhe atender, sendo que os mesmos se
+                  referem aos custos de utilização pelo período de uso, nos termos do <strong>inciso III do Art. 5º da
+                    Lei
+                    10.520/02</strong>.
+                </p>
+              </div>
+            </article>
+
+            <article class="mt-5">
+              <img src="./img/Grupo 464.svg" height="75"
+                style="position: absolute; margin-top: -30px; margin-left: -10px;">
+              <div class="pl-5 py-4 pr-4 mt-4 ml-4 rounded" style="background: #f7f7f7">
+                <h4 class="mt-3">Passo 6</h4>
+
+                <p>
+                  Escolha seu segmento com a máxima atenção pois é através dele que você irá receber em seu e-mail todas
+                  as publicações dos pregões lançados em nossa plataforma.
+                </p>
+              </div>
+            </article>
+          </section>
+        </div>
+      </div>
+
+      <h3 class="mt-4">
+        Planos
+      </h3>
+      <div class="form-row mt-4">
+        <div class="col-lg-3">
+          <div id="plano30dias" class="plano">
+            <div class="d-flex justify-content-end">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="30dias" name="plano" value="30" class="custom-control-input">
+                <label class="custom-control-label text-uppercase" for="30dias">
+                </label>
+              </div>
+            </div>
+
+            <p class="text-center numeroDias">30 dias</p>
+            <p class="text-center">R$ 165,41</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 mt-3 mt-lg-0">
+          <div id="plano90dias" class="plano">
+            <div class="d-flex justify-content-end">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="90dias" name="plano" value="90" class="custom-control-input">
+                <label class="custom-control-label text-uppercase" for="90dias">
+                </label>
+              </div>
+            </div>
+
+            <p class="text-center numeroDias">90 dias</p>
+            <p class="text-center">R$ 211,58</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 mt-3 mt-lg-0">
+          <div id="plano180dias" class="plano">
+            <div class="d-flex justify-content-end">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="180dias" name="plano" value="180" class="custom-control-input">
+                <label class="custom-control-label text-uppercase" for="180dias">
+                </label>
+              </div>
+            </div>
+
+            <p class="text-center numeroDias">180 dias</p>
+            <p class="text-center">R$ 288,71</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 mt-3 mt-lg-0">
+          <div id="plano365dias" class="plano">
+            <div class="d-flex justify-content-end">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="365dias" name="plano" value="365" class="custom-control-input">
+                <label class="custom-control-label text-uppercase" for="365dias">
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-center numeroDias">365 dias</p>
+              <p class="text-center">R$ 407,15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <p class="mt-5">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sequi cumque iusto, neque dolores facilis
+        consectetur possimus voluptates perspiciatis eaque fugiat. Eveniet, nam necessitatibus voluptatem velit fuga et!
+        Praesentium, distinctio.
+      </p> -->
+
+      <div class="d-flex justify-content-end mt-5">
+
+        <button type="button" class="btn buttonForm concluirButton btn-primary" id="btnConcluir">Concluir adesão</button>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="modal fade" id="modalConcluirAdesao" tabindex="-1" role="dialog"
+    aria-labelledby="modalConcluirAdesaoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <h2 style="font-size: 32px;" class="montserrat textoAzul text-center font-weight-bold text-uppercase">Cadastro
+            realizado com sucesso!</h2>
+
+          <p class="mt-5 qanelas text-center">
+            Verifique seu e-mail, foi enviado para <strong class="textoAzul">exemplo@email.com</strong> maiores
+            informações
+            <br>
+            sobre o andamento do seu cadastro!
+          </p>
+
+          <div class="d-flex justify-content-end mt-5">
+            <button type="button" style="border-radius: 20px;"
+              class="btn btn-primary font-weight-bold text-uppercase concluirButton"
+              data-dismiss="modal">Confirmar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-5">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <img src="./img/logo (Símbolo).png" height="80">
+
+        <div class="w-100">
+          <div class="border-bottom w-100 mt-5 mb-3 mx-auto"></div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row redesSociais ml-3 ml-md-0">
+                <div class="col-4">
+                  <div class="row align-items-center handOver" id="open-instagram">
+                    <img src="./img/instagram.svg" height="40" class="mr-3">
+                    <span class="text-uppercase font-weight-bold qanelas">Instagram</span>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="row align-items-center handOver" id="open-facebook">
+                    <img src="./img/facebook.svg" height="40" class="mr-3">
+                    <span class="text-uppercase font-weight-bold qanelas">Facebook</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-3">
+          <div class="d-flex align-items-center handOver" id="open-skype">
+            <img src="./img/skype.svg" class="mr-3" height="40">
+
+            <div>
+              <p class="mb-0 tituloRodape">Skype</p>
+              <p class="mb-0 descricaoRodape">Adicionar aos contatos</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center mt-4 handOver" id="open-whatsapp">
+            <img src="./img/whatsapp.svg" class="mr-3" height="40">
+
+            <div>
+              <p class="mb-0 tituloRodape">Whatsapp</p>
+              <p class="mb-0 descricaoRodape">(34) 3014-6633</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2 mt-4 mt-lg-0">
+          <div class="d-flex flex-column justify-content-between h-100 align-items-start">
+            <a href="./sobre.html">
+              <button class="btn btn-link">Sobre a Licitanet</button>
+            </a>
+
+            <a href="./disputas-processos.html">
+              <button class="btn btn-link">Processos</button>
+            </a>
+
+            <a href="./disputas-processos.html">
+              <button class="btn btn-link">Sala de disputas</button>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2 mt-4 mt-lg-0">
+          <div class="d-flex flex-column justify-content-between h-100 align-items-start">
+            <a href="./adesao-fornecedor.html">
+              <button class="btn btn-link">Fornecedores</button>
+            </a>
+
+            <a href="./adesao-comprador.html">
+              <button class="btn btn-link">Compradores</button>
+            </a>
+
+            <a href="./disputas-processos.html">
+              <button class="btn btn-link">Sociedade</button>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mt-4 mt-lg-0">
+          <div class="d-flex justify-content-center">
+            <div class="text-left">
+              <p class="qanelas">Horário de funcionamento</p>
+              <p class="qanelas">8:30 às 12:00 / 13:00 às 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-2 mt-4 mt-lg-0 text-center">
+          <img src="./img/Selo.png" height="150">
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #3A85F7;" class="mt-4">
+      <div class="container py-4">
+        <div class="row justify-content-between">
+          <div class="col-lg-7">
+            <div class="d-flex align-items-center">
+              <img src="./img/phone-call.svg" height="30" class="mr-3">
+              <p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B !important;"
+                class="montserrat font-weight-bold m-0">
+                Telefones:</p>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-between">
+              <p style="font-size: 14px;" class="m-0 qanelas text-white">
+                (34) 3014-6633 / 3236-7571
+              </p>
+
+              <p style="font-size: 14px;" class="m-0 qanelas text-white">
+                (34) 99807-6633 (Pregoeiros)
+              </p>
+
+              <p style="font-size: 14px;" class="m-0 qanelas text-white">
+                (34) 99678-7950 (Fornecedores)
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="d-flex align-items-center">
+              <img src="./img/phone-call.svg" height="30" class="mr-3">
+              <p style="font-size: 22px; letter-spacing: 5px; color: #FEC52B !important;"
+                class="montserrat font-weight-bold m-0">
+                E-mails:</p>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-between">
+              <p style="font-size: 14px;" class="m-0 qanelas text-white">
+                contato@licitanet.com.br
+              </p>
+
+              <p style="font-size: 14px;" class="m-0 qanelas text-white">
+                financeiro@licitanet.com.br
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #333333;">
+      <div class="container py-2">
+        <div class="d-flex justify-content-between">
+          <p class="m-0 text-white" style="font-size: 12px !important;">&copy; 2017 - Licitanet. Todos os direitos
+            reservados</p>
+          <p class="m-0 text-white" style="font-size: 12px !important;">Site desenvolvido pela Studio 23 <img
+              src="./img/Grupo 542.svg" height="20" class="ml-3"></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/adesao-fornecedor.js"></script>
+</body>
+
+</html>

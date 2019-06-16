@@ -1,0 +1,312 @@
+html,
+body {
+  background: #f9f9f9 !important;
+  scroll-behavior: smooth;
+}
+
+button {
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
+}
+
+button.btn-link {
+  box-shadow: none !important;
+}
+
+button.navbar-toggler:focus {
+  outline: none;
+}
+
+section#adesoes button {
+  padding: 15px 35px !important;
+  border-radius: 35px;
+  width: 90%;
+  font-family: Qanelas;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+section#planos ul {
+  padding: 0 15px !important;
+}
+
+section#planos li {
+  font-family: Qanelas;
+  vertical-align: middle;
+  font-size: 18px;
+  list-style-type: none;
+}
+
+section#planos li:before {
+  content: url("../img/checked.svg");
+  margin-left: -20px;
+  margin-right: 10px;
+}
+
+.box {
+  box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.16);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.grow {
+  transition: all 0.35s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+.headerButton {
+  padding: 15px 25px !important;
+  border-radius: 35px !important;
+  font-family: Qanelas;
+}
+
+.sistemaButton {
+  padding: 5px 30px !important;
+  border-radius: 35px !important;
+  font-family: Qanelas;
+}
+
+.planosButton {
+  padding: 15px 20px !important;
+  border-radius: 35px !important;
+  width: 80%;
+  color: #fff !important;
+  font-family: Qanelas;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.sobreButton {
+  padding: 15px 20px !important;
+  border-radius: 35px !important;
+  width: 80%;
+  color: #fff !important;
+  font-family: Qanelas;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#avisos {
+  font-family: Qanelas;
+}
+
+.avisoBox {
+  border-radius: 31px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.avisoTitulo {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#areaAvisos {
+  height: 520px;
+  overflow-y: auto;
+}
+
+section#avisos button {
+  border-radius: 35px;
+  padding: 10px 55px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+section#grafico {
+  background: rgba(58, 133, 247, 0.78);
+}
+
+#header {
+  background: url("../img/Grupo\ 680.png") no-repeat center right;
+  background-size: cover;
+  height: 800px;
+}
+
+#planos {
+  background: url("../img/Reunião\ 1-image.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+#planosLayer {
+  background: url("../img/Retângulo\ 39.svg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+}
+
+#navbar li {
+  padding: 15px 20px !important;
+  text-transform: uppercase;
+  padding-right: 0 !important;
+  font-family: Qanelas;
+}
+
+#navbar li a {
+  color: #717171 !important;
+}
+
+div.thumbnail_container {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background: url("../img/NoPath.svg") no-repeat center center;
+  border-radius: 20px;
+}
+
+div.thumbnailLayer {
+  background: url("../img/Retângulo\ 932.svg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+}
+
+div.thumbnailLayer:hover {
+  cursor: pointer;
+}
+
+div.thumbnailLayer a.start-video img {
+  transition: 0.35s;
+}
+
+div.thumbnailLayer:hover a.start-video img {
+  transform: scale(1.2);
+}
+
+.start-video:hover {
+  opacity: 1;
+}
+
+#playerVideo {
+  border-radius: 20px;
+}
+
+.imagemNoticia {
+  max-width: 100%;
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.avisoButtonFloat {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  text-align: center;
+  z-index: 900;
+}
+
+.boxPlanos {
+  min-height: 375px !important;
+}
+
+.textoDescricao {
+  min-height: 96px;
+}
+
+.infoArea {
+  min-height: 800px;
+}
+
+@media (max-width: 575.98px) {
+  #header {
+    background: #f9f9f9;
+    height: auto;
+  }
+
+  .grow:hover {
+    transform: scale(1);
+  }
+
+  #areaAvisos {
+    height: 450px;
+  }
+
+  .boxPlanos,
+  .textoDescricao,
+  .infoArea {
+    min-height: auto;
+  }
+}
+
+.tituloRodape {
+  font-weight: bold;
+  font-family: Montserrat;
+  color: #717171;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.descricaoRodape {
+  font-size: 16px;
+  color: #717171;
+  font-family: Qanelas;
+}
+
+footer .btn-link {
+  font-family: Qanelas;
+  color: #717171 !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 575.98px) {
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #header {
+    background: #f9f9f9;
+    height: auto;
+  }
+
+  .grow:hover {
+    transform: scale(1);
+  }
+
+  #areaAvisos {
+    height: 450px;
+  }
+
+  .boxPlanos,
+  .textoDescricao,
+  .infoArea {
+    min-height: auto;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #header {
+    background: #f9f9f9;
+    height: auto;
+  }
+
+  .grow:hover {
+    transform: scale(1);
+  }
+
+  #areaAvisos {
+    height: 450px;
+  }
+
+  .boxPlanos,
+  .textoDescricao,
+  .infoArea {
+    min-height: auto;
+  }
+
+  .redesSociais {
+    justify-content: space-around !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .redesSociais {
+    justify-content: flex-end !important;
+  }
+}
