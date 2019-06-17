@@ -549,14 +549,17 @@ $("#btnConcluir").click(function () {
       // formData.append("fornecedor_qsa", listFornecedoresQsa);
       // formData.append("segmento", segmento);
 
+
+      var allFornecedoresQsa = [];
       listFornecedoresQsa.forEach(function (fornecedor, i) {
         // formData.append('fornecedor_qsa[' + i + '][tipo]', fornecedor.tipo);
         // formData.append('fornecedor_qsa[' + i + '][cpf]', fornecedor.cpf);
         // formData.append('fornecedor_qsa[' + i + '][nome]', fornecedor.nome);
-
-        formData.append('fornecedor_qsa', fornecedor);
+        allFornecedoresQsa.push(new FornecedorQsa(fornecedor.tipo, fornecedor.cpf, fornecedor.nome))
+        // formData.append('fornecedor_qsa', fornecedor);
       })
 
+      formData.append('fornecedor_qsa', allFornecedoresQsa);
       segmentos.forEach(function (segmento, i) {
         // formData.append('segmento[' + i + ']', segmento);     
         formData.append('segmento', segmento.codigo);
@@ -567,6 +570,11 @@ $("#btnConcluir").click(function () {
         formData.append('arquivos', file);
       })
 
+      var object = {};
+      formData.forEach((value, key) => { object[key] = value });
+      var json = JSON.stringify(object);
+      console.log(json);
+      
 
       $.ajax({
         url: 'https://licitanet.com.br/licitanet_api_site/fornecedor/salvar',
@@ -578,6 +586,8 @@ $("#btnConcluir").click(function () {
           // $('#image').show();
         },
         complete: function (data) {
+          console.log(data);
+
           chamaModalSucess(email);
           // $('#image').hide();
         }
@@ -739,5 +749,10 @@ $("#open-facebook").click(function () {
   window.open(go_to_url, '_blank');
 });
 
-
-
+class FornecedorQsa {
+  constructor(tipo, cpf, nome) {
+    this.tipo = tipo;
+    this.cpf = cpf;
+    this.nome = nome;
+  }
+}

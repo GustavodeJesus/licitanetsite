@@ -336,10 +336,12 @@ function postProcessosAguardandoHomologacao(params) {
                 $('.readMore').click(function () {
                     var index = $('.readMore').index(this);
                     var modal = $();
-                   
+
                     modal = modal.add(createModal(listProcessos[index]));
                     $('#modal-avisos').empty().append(modal);
                     $('#myModal').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -388,10 +390,12 @@ function postProcessosPublicados(params) {
                 $('.readMore').click(function () {
                     var index = $('.readMore').index(this);
                     var modal = $();
-                   
+
                     modal = modal.add(createModal(listProcessos[index]));
                     $('#modal-avisos').empty().append(modal);
                     $('#myModal').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -441,10 +445,12 @@ function postProcessosRevogados(params) {
                 $('.readMore').click(function () {
                     var index = $('.readMore').index(this);
                     var modal = $();
-                   
+
                     modal = modal.add(createModal(listProcessos[index]));
                     $('#modal-avisos').empty().append(modal);
                     $('#myModal').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -492,10 +498,12 @@ function postProcessosHomologados(params) {
                 $('.readMore').click(function () {
                     var index = $('.readMore').index(this);
                     var modal = $();
-                  
+
                     modal = modal.add(createModal(listProcessos[index]));
                     $('#modal-avisos').empty().append(modal);
                     $('#myModal').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -557,10 +565,9 @@ function createProcessoTemplate(processo) {
         '<option value="" selected disabled>Selecione</option>',
         '<option value="">Arquivos</option>',
         '<option value="', processo.url_classificacao, '">Classificação</option>',
-        '<option value="', processo.url_proposta_inicial, '">P. inicial</option>',
+        '<option value="', processo.url_proposta_inicial, '">Proposta inicial</option>',
         '<option value="">Ata</option>',
         '<option value="', processo.url_vencedores, '">Vencedor</option>',
-        '<option value="">P. final</option>',
         '</select>',
         '</div>',
         '</div>',
@@ -644,15 +651,15 @@ function createModal(processo) {
         '<div class="modal-body p-4">',
         '<div class="my-3 p-4">',
         '<div class="row">',
-        '<div class="col-md-3" data-toggle="tooltip" data-placement="top"',
-        'title="', "Fim Recebimento: " + 'Teste' + "\n"
-        + "Início Análise Proposta: " + 'Teste' + "\n"
-        + "Fim Análise Proposta: " + 'Teste' + "\n"
-        + "Início da Disputa: " + 'Teste', '">',
+        '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true"',
+        'title="', "<p>Fim Recebimento: " + processo.disputa + "</p>"
+        + "<p>Início Análise Proposta: " + processo.fim_recprop + "</p>"
+        + "<p>Fim Análise Proposta: " + processo.ini_aberprop + "</p>"
+        + "<p>Início da Disputa: " + processo.fim_aberprop, '</p>">',
         '<div class="d-flex flex-column justify-content-center align-items-center">',
         '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
         '<p class="font-weight-bold">', 'Início da disputa', '</p>',
-        '<p>',processo.data_publicacao.substring(0, 10),'</p>',
+        '<p>', processo.data_publicacao.substring(0, 10), '</p>',
         '<p>', processo.data_publicacao.substring(11, 16), '</p>',
         '</div>',
         '</div>',
@@ -742,8 +749,13 @@ function createDisputaTemplate(disputa) {
     disputaTemplate = [
         '<div class="my-3 p-4 box">',
         '<div class="row">',
-        '<div class="col-md-2 text-center border-right-2">',
+        '<div class="col-md-2 text-center border-right-2" data-toggle="tooltip" id="tooltip-datas" data-html="true" data-placement="top"',
+        'title="', "<p>Fim Recebimento: " + disputa.disputa + "</p>"
+        + "<p>Início Análise Proposta: " + disputa.fim_recprop + "</p>"
+        + "<p>Fim Análise Proposta: " + disputa.ini_aberprop + "</p>"
+        + "<p>Início da Disputa: " + disputa.fim_aberprop, '</p>">',
         '<img src="./img/União 1.svg" width="55">',
+        '<p>Início da Disputa</p>',
         '<p>', disputa.data_publicacao.substring(0, 10), '</p>',
         '<p>', disputa.data_publicacao.substring(11, 16), '</p>',
         '</div>',
@@ -776,9 +788,9 @@ function createDisputaTemplate(disputa) {
         '</div>'
     ]
 
-    $('[data-toggle="tooltip"]').tooltip({
-        trigger: 'hover'
-    });
+    // $('[data-toggle="tooltip"]').tooltip({
+    //     trigger: 'hover'
+    // });
 
     return $(disputaTemplate.join(''));
 }
@@ -910,7 +922,7 @@ function postEmDisputa(params) {
                     processos = processos.add(createDisputaTemplate(item));
                 });
                 $('#em-disputa').empty().append(processos);
-
+                $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
                 $('.imgUrlDisputa').click(function () {
                     var index = $('.imgUrlDisputa').index(this);
                     window.open(listDisputas[index].url_sala_disputa, '_blank');
@@ -919,10 +931,12 @@ function postEmDisputa(params) {
                 $('.readMoreDisputa').click(function () {
                     var index = $('.readMoreDisputa').index(this);
                     var modal = $();
-                   
+
                     modal = modal.add(createModalDisputa(listDisputas[index]));
                     $('#modal-avisos-disputa').empty().append(modal);
                     $('#myModalDisputa').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -945,15 +959,15 @@ function createModalDisputa(processo) {
         '<div class="modal-body p-4">',
         '<div class="my-3 p-4">',
         '<div class="row">',
-        '<div class="col-md-3" data-toggle="tooltip" data-placement="top"',
-        'title="', "Fim Recebimento: " + 'Teste' + "\n"
-        + "Início Análise Proposta: " + 'Teste' + "\n"
-        + "Fim Análise Proposta: " + 'Teste' + "\n"
-        + "Início da Disputa: " + 'Teste', '">',
+        '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true"',
+        'title="', "<p>Fim Recebimento: " + processo.disputa + "</p>"
+        + "<p>Início Análise Proposta: " + processo.fim_recprop + "</p>"
+        + "<p>Fim Análise Proposta: " + processo.ini_aberprop + "</p>"
+        + "<p>Início da Disputa: " + processo.fim_aberprop, '</p>">',
         '<div class="d-flex flex-column justify-content-center align-items-center">',
         '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
         '<p class="font-weight-bold">', 'Início da disputa', '</p>',
-        '<p>',processo.data_publicacao.substring(0, 10),'</p>',
+        '<p>', processo.data_publicacao.substring(0, 10), '</p>',
         '<p>', processo.data_publicacao.substring(11, 16), '</p>',
         '</div>',
         '</div>',
@@ -1064,12 +1078,15 @@ function postProcessosAguardandoHomologacaoDisputa(params) {
                 });
 
                 $('#aguardando-homologacao-disputa').empty().append(processos);
+                $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
                 $('.readMoreDisputa').click(function () {
                     var index = $('.readMoreDisputa').index(this);
                     var modal = $();
                     modal = modal.add(createModalDisputa(listDisputas[index]));
                     $('#modal-avisos-disputa').empty().append(modal);
                     $('#myModalDisputa').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -1113,13 +1130,15 @@ function postProcessosRevogadosDisputa(params) {
                     processos = processos.add(createDisputaTemplate(item));
                 });
                 $('#processo-revogado-disputa').empty().append(processos);
-
+                $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
                 $('.readMoreDisputa').click(function () {
                     var index = $('.readMoreDisputa').index(this);
                     var modal = $();
                     modal = modal.add(createModalDisputa(listDisputas[index]));
                     $('#modal-avisos-disputa').empty().append(modal);
                     $('#myModalDisputa').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
@@ -1203,14 +1222,16 @@ function postProcessosHomologadosDisputa(params) {
                 });
 
                 $('#processo-homologados-disputa').empty().append(processos);
-
+                $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
 
                 $('.readMoreDisputa').click(function () {
                     var index = $('.readMoreDisputa').index(this);
                     var modal = $();
-                               modal = modal.add(createModalDisputa(listDisputas[index]));
+                    modal = modal.add(createModalDisputa(listDisputas[index]));
                     $('#modal-avisos-disputa').empty().append(modal);
                     $('#myModalDisputa').modal('show');
+                    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
                 });
             }
         },
