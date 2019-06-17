@@ -474,7 +474,6 @@ $("#btnConcluir").click(function () {
   let divNomesRepresentantes = document.getElementsByClassName("nomeRepresentanteLegal");
   let divCpfRepresentantes = document.getElementsByClassName("cpfRepresentanteLegal");
   let divTipoSociedadeRepresentantes = document.getElementsByClassName("tipoSociedadeRepresentanteLegal");
-  let divSegmentos = document.getElementsByClassName("segmentosEscolhidos");
 
   for (i = 0; i < divNomesRepresentantes.length; i++) {
     (!divNomesRepresentantes[i].value.length > 0) ?
@@ -559,16 +558,25 @@ $("#btnConcluir").click(function () {
         // formData.append('fornecedor_qsa', fornecedor);
       })
 
-      formData.append('fornecedor_qsa', allFornecedoresQsa);
+      formData.append('fornecedor_qsa', JSON.stringify(allFornecedoresQsa));
+
+      segs = [];
       segmentos.forEach(function (segmento, i) {
         // formData.append('segmento[' + i + ']', segmento);     
-        formData.append('segmento', segmento.codigo);
+        segs.push(segmento.codigo);
       })
 
+      formData.append('segmento', JSON.stringify(segs));
+
       filesUploads.forEach(function (file, i) {
-        // formData.append('arquivos[', i, ']', file);
-        formData.append('arquivos', file);
+        // formData.append('arquivos['+ i+']', file);
+        // formData.append('arquivos[]', file);
       })
+
+      formData.append('arquivos', filesUploads);
+    
+      console.log(JSON.stringify(allFornecedoresQsa));
+      
 
       var object = {};
       formData.forEach((value, key) => { object[key] = value });
