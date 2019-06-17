@@ -234,7 +234,7 @@ function buscaDadosCnpj(cnpj) {
     dataType: 'jsonp',
     success: function (json) {
 
-
+      console.log(json);
       $.map($('#estados option'), function (option) {
         if (option.value.includes(json.uf)) {
           $("#estados select").val(option.value);
@@ -423,6 +423,7 @@ $(document).ready(function ($) {
   $('.telefone-fixo').mask('(00) 0000-0000');
   $('.cep-fornecedor').mask('00.000-000');
   $('.cpf-fornecedor').mask('000.000.000-00', { reverse: true });
+  $('.cpfRepresentante').mask('000.000.000-00', { reverse: true });
   $('.telefone-celular').mask('(00) 9 0000-0000');
 })
 
@@ -466,7 +467,8 @@ $("#btnConcluir").click(function () {
   var senha = $('#senhaUsuario').val();
   var celular = $('#celular').val();
   var natureza_juridica = $('#naturezaJuridica').val();
-  var nomeRepresentante = "DORIEDSON CARLOS BRITES DE FIGUEIREDO";
+  var nomeRepresentante = $('#nomeRepresentante').val();
+  var cpfRepresentante = $('#cpfRepresentante').val();
   var plano = $("input[name='plano']:checked").val() == '' ? "0" : $("input[name='plano']:checked").val();
 
   validaCampos();
@@ -493,7 +495,6 @@ $("#btnConcluir").click(function () {
   }
 
   var prazo_contrato = plano;
-  var cpf_representante = "128.643.506-45"
   var formData = new FormData();
 
   if (plano == "0") {
@@ -538,7 +539,7 @@ $("#btnConcluir").click(function () {
       formData.append("site", site);
       formData.append("telefone_fixo", telefone_fixo);
       formData.append("nome_representante", nomeRepresentante);
-      formData.append("cpf_representante", cpf_representante);
+      formData.append("cpf_representante", cpfRepresentante);
       formData.append("celular", celular);
       formData.append("email", email);
       formData.append("usuario", usuario);
@@ -589,36 +590,8 @@ $("#btnConcluir").click(function () {
       $.ajax({
         url: 'https://licitanet.com.br/licitanet_api_site/fornecedor/salvar',
         type: 'POST',
-        data: jQuery.param({
-          token: token,
-          tipo: tipo,
-          num_documento: num_documento,
-          enquadramento: enquadramento,
-          microempresa: microempresa,
-          razao_social: razao_social,
-          fantasia: fantasia,
-          cep: cep,
-          endereco: endereco,
-          numero: numero,
-          complemento: complemento,
-          bairro: bairro,
-          estado: codEstado,
-          cidade:cidade,
-          site: site,
-          telefone_fixo: telefone_fixo,
-          nome_representante: nomeRepresentante,
-          cpf_representante: cpf_representante,
-          celular: celular,
-          email: email,
-          usuario: usuario,
-          senha: senha,
-          prazo_contrato: prazo_contrato,
-          natureza_juridica: natureza_juridica,
-          segmento: segs,
-          // arquivos: filesUploads,
-          // fornecedor_qsa: listFornecedoresQsa
-        }),
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: formData,
+        contentType: false,
         beforeSend: function () {
         },
         success: function (response) {
@@ -630,7 +603,7 @@ $("#btnConcluir").click(function () {
         },
         error: function (e) {
           console.log(e);
-          
+
         }
       });
     } else {
@@ -675,6 +648,11 @@ function validaCampos() {
   $("#nomeUsuario").val() == '' ? $('#nomeUsuario').addClass('is-invalid') : $('#nomeUsuario').removeClass('is-invalid');
 
   $("#senhaUsuario").val() == '' ? $('#senhaUsuario').addClass('is-invalid') : $('#senhaUsuario').removeClass('is-invalid');
+
+  !validaCpf($('#cpfRepresentante').val()) ? $('#cpfRepresentante').addClass('is-invalid') : $('#cpfRepresentante').removeClass('is-invalid');
+
+  $("#nomeRepresentante").val() == '' ? $('#nomeRepresentante').addClass('is-invalid') : $('#nomeRepresentante').removeClass('is-invalid');
+
 }
 
 function calcDigitosPosicoes(digitos, posicoes = 10, soma_digitos = 0) {

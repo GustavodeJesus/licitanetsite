@@ -563,7 +563,7 @@ function createProcessoTemplate(processo) {
         '<p>Relatórios</p>',
         '<select name="relatorios" onchange="if (this.value) openUrl(this.value);" id="relatorios" class="form-control selectRelatorios">',
         '<option value="" selected disabled>Selecione</option>',
-        '<option value="', processo.arquivos, '">Arquivos</option>',
+        '<option value="', getFiles(processo.arquivos), '">Arquivos</option>',
         '<option value="', processo.url_classificacao, '">Classificação</option>',
         '<option value="', processo.url_proposta_inicial, '">Proposta inicial</option>',
         '<option value="">Ata</option>',
@@ -574,6 +574,20 @@ function createProcessoTemplate(processo) {
         '</div>']
 
     return $(processoTemplate.join(''));
+}
+
+function getFiles(arquivos) {
+
+    var stringFiles = "";
+    var stringNames = ""
+    arquivos.forEach(function (arquivo) {
+        if (arquivo.diretorio != "") {
+            stringFiles = stringFiles + "|diretorio|" + arquivo.diretorio;
+            stringNames = stringNames + "|nomeFile|" + arquivo.nome;
+        }
+    });
+
+    return "arquivos:" + stringFiles + "|||" + stringNames;
 }
 
 /**
@@ -697,14 +711,19 @@ function createModal(processo) {
  * Função auxiliar para abrir as url do select da disputa.
  */
 function openUrl(url) {
-    console.log(url);
+    if (url.includes("arquivos:")) {
 
-    if (url[0] == "/" || url[0] == ".") {
-
-        var urls = url.split(",");
+        var files = url.substring(9, url.length);
+        var tipos = files.split("|||");
+        var diretorios = tipos[0].split("|diretorio|");
+        var nomes = tipos[1].split("|nomeFile|");
         var links = "";
-        urls.forEach(function(url){
-            links = links + '<p><a href="' + url +'" target="_self">Click to Download</a></p>' + "\n";
+        diretorios.forEach(function (url, i) {
+            if (url != "") {
+                var nameFile = nomes[i];
+                links = links + '<div class="mt-2 d-flex justify-content-center align-items-center"><img src="./img/arquivos.svg" height="30" class="mr-2"><p class="qanelas"><a href="' + url + '" download">' + nameFile + '</a></p></div>' + "\n";
+            }
+
         });
 
         var modal = $();
@@ -721,20 +740,14 @@ function createModalDonwload(trechoHtml) {
     modalTemplate = [
         '<div class="modal fade" id="myModalDownload" tabindex="-1" role="dialog"',
         'aria-labelledby="exampleModalCenterTitle" aria-hidden="true">',
-        '<div class="modal-dialog modal-dialog-centered modal-lg" role="document">',
+        '<div class="modal-dialog modal-dialog-centered" role="document">',
         '<div class="modal-content">',
         '<div class="modal-body p-4">',
-        '<div class="my-3 p-4">',
-        '<div class="row">',
-        '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true">',
+        '<p class="font-weight-bold text-center text-uppercase montserrat mb-4" style="font-size: 24px;">Arquivos</p>',
         '<div class="d-flex flex-column justify-content-center align-items-center">',
-        '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
         trechoHtml,
         '</div>',
-        '</div>',
-        '</div>',
-        '</div>',
-        '<div class="d-flex justify-content-end">',
+        '<div class="d-flex justify-content-end mt-4">',
         '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Qanelas;">OK</button>',
         '</div>',
         '</div>',
