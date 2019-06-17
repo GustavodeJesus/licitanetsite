@@ -549,16 +549,17 @@ $("#btnConcluir").click(function () {
       // formData.append("segmento", segmento);
 
 
-      var allFornecedoresQsa = [];
+      var allFornecedoresQsa = new Array();
       listFornecedoresQsa.forEach(function (fornecedor, i) {
         // formData.append('fornecedor_qsa[' + i + '][tipo]', fornecedor.tipo);
         // formData.append('fornecedor_qsa[' + i + '][cpf]', fornecedor.cpf);
         // formData.append('fornecedor_qsa[' + i + '][nome]', fornecedor.nome);
-        allFornecedoresQsa.push(new FornecedorQsa(fornecedor.tipo, fornecedor.cpf, fornecedor.nome))
+        var aux = new FornecedorQsa(fornecedor.tipo, fornecedor.cpf, fornecedor.nome)
+        allFornecedoresQsa[i] = (aux);
         // formData.append('fornecedor_qsa', fornecedor);
       })
 
-      formData.append('fornecedor_qsa', JSON.stringify(allFornecedoresQsa));
+      formData.append('fornecedor_qsa', listFornecedoresQsa);
 
       segs = [];
       segmentos.forEach(function (segmento, i) {
@@ -566,7 +567,7 @@ $("#btnConcluir").click(function () {
         segs.push(segmento.codigo);
       })
 
-      formData.append('segmento', JSON.stringify(segs));
+      formData.append('segmento', segs);
 
       filesUploads.forEach(function (file, i) {
         // formData.append('arquivos['+ i+']', file);
@@ -574,30 +575,62 @@ $("#btnConcluir").click(function () {
       })
 
       formData.append('arquivos', filesUploads);
-    
+
       console.log(JSON.stringify(allFornecedoresQsa));
-      
+
 
       var object = {};
       formData.forEach((value, key) => { object[key] = value });
       var json = JSON.stringify(object);
       console.log(json);
-      
+
+      var codEstado = (estado.length == 4) ? estado.toString().substring(2, 4) : estado.toString().substring(2, 3);
 
       $.ajax({
         url: 'https://licitanet.com.br/licitanet_api_site/fornecedor/salvar',
-        type: "POST",
-        processData: false,
-        contentType: false,
-        data: formData,
+        type: 'POST',
+        data: jQuery.param({
+          token: token,
+          tipo: tipo,
+          num_documento: num_documento,
+          enquadramento: enquadramento,
+          microempresa: microempresa,
+          razao_social: razao_social,
+          fantasia: fantasia,
+          cep: cep,
+          endereco: endereco,
+          numero: numero,
+          complemento: complemento,
+          bairro: bairro,
+          estado: codEstado,
+          cidade:cidade,
+          site: site,
+          telefone_fixo: telefone_fixo,
+          nome_representante: nomeRepresentante,
+          cpf_representante: cpf_representante,
+          celular: celular,
+          email: email,
+          usuario: usuario,
+          senha: senha,
+          prazo_contrato: prazo_contrato,
+          natureza_juridica: natureza_juridica,
+          segmento: segs,
+          // arquivos: filesUploads,
+          // fornecedor_qsa: listFornecedoresQsa
+        }),
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         beforeSend: function () {
-          // $('#image').show();
         },
-        complete: function (data) {
-          console.log(data);
+        success: function (response) {
+          if (response.tip_msg == "success") {
+            console.log(data);
 
-          chamaModalSucess(email);
-          // $('#image').hide();
+            chamaModalSucess(email);
+          }
+        },
+        error: function (e) {
+          console.log(e);
+          
         }
       });
     } else {

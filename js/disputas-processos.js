@@ -531,14 +531,14 @@ function createProcessoTemplate(processo) {
         '<div class="my-3 p-4 box">',
         '<div class="row">',
         '<div class="col-md-2 text-center border-right-3" data-toggle="tooltip" id="tooltip-datas" data-html="true" data-placement="top"',
-        'title="', "<p>Fim Recebimento: " + processo.disputa + "</p>"
-        + "<p>Início Análise Proposta: " + processo.fim_recprop + "</p>"
-        + "<p>Fim Análise Proposta: " + processo.ini_aberprop + "</p>"
-        + "<p>Início da Disputa: " + processo.fim_aberprop, '</p>">',
+        'title="', "<p>Fim Recebimento: " + processo.fim_recprop + "</p>"
+        + "<p>Início Análise Proposta: " + processo.ini_aberprop + "</p>"
+        + "<p>Fim Análise Proposta: " + processo.fim_aberprop + "</p>"
+        + "<p>Início da Disputa: " + processo.disputa, '</p>">',
         '<img src = "./img/União 1.svg" width = "55">',
         '<p>Início da disputa</p>',
-        '<p>', processo.data_publicacao.substring(0, 10), '</p>',
-        '<p>', processo.data_publicacao.substring(11, 16), '</p>',
+        '<p>', processo.disputa.substring(0, 10), '</p>',
+        '<p>', processo.disputa.substring(11, 16), '</p>',
         '</div>',
         '<div class="col-md-1">',
         '<p>Pregão</p>',
@@ -563,7 +563,7 @@ function createProcessoTemplate(processo) {
         '<p>Relatórios</p>',
         '<select name="relatorios" onchange="if (this.value) openUrl(this.value);" id="relatorios" class="form-control selectRelatorios">',
         '<option value="" selected disabled>Selecione</option>',
-        '<option value="">Arquivos</option>',
+        '<option value="', processo.arquivos, '">Arquivos</option>',
         '<option value="', processo.url_classificacao, '">Classificação</option>',
         '<option value="', processo.url_proposta_inicial, '">Proposta inicial</option>',
         '<option value="">Ata</option>',
@@ -652,15 +652,15 @@ function createModal(processo) {
         '<div class="my-3 p-4">',
         '<div class="row">',
         '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true"',
-        'title="', "<p>Fim Recebimento: " + processo.disputa + "</p>"
-        + "<p>Início Análise Proposta: " + processo.fim_recprop + "</p>"
-        + "<p>Fim Análise Proposta: " + processo.ini_aberprop + "</p>"
-        + "<p>Início da Disputa: " + processo.fim_aberprop, '</p>">',
+        'title="', "<p>Fim Recebimento: " + processo.fim_recprop + "</p>"
+        + "<p>Início Análise Proposta: " + processo.ini_aberprop + "</p>"
+        + "<p>Fim Análise Proposta: " + processo.fim_aberprop + "</p>"
+        + "<p>Início da Disputa: " + processo.disputa, '</p>">',
         '<div class="d-flex flex-column justify-content-center align-items-center">',
         '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
         '<p class="font-weight-bold">', 'Início da disputa', '</p>',
-        '<p>', processo.data_publicacao.substring(0, 10), '</p>',
-        '<p>', processo.data_publicacao.substring(11, 16), '</p>',
+        '<p>', processo.disputa.substring(0, 10), '</p>',
+        '<p>', processo.disputa.substring(11, 16), '</p>',
         '</div>',
         '</div>',
         '<div class="col-md-3">',
@@ -697,9 +697,53 @@ function createModal(processo) {
  * Função auxiliar para abrir as url do select da disputa.
  */
 function openUrl(url) {
-    window.open(url, '_blank');
+    console.log(url);
+
+    if (url[0] == "/" || url[0] == ".") {
+
+        var urls = url.split(",");
+        var links = "";
+        urls.forEach(function(url){
+            links = links + '<p><a href="' + url +'" target="_self">Click to Download</a></p>' + "\n";
+        });
+
+        var modal = $();
+        modal = modal.add(createModalDonwload(links));
+        $('#modal-download').empty().append(modal);
+        $('#myModalDownload').modal('show');
+
+    } else
+        window.open(url, '_blank');
 }
 
+
+function createModalDonwload(trechoHtml) {
+    modalTemplate = [
+        '<div class="modal fade" id="myModalDownload" tabindex="-1" role="dialog"',
+        'aria-labelledby="exampleModalCenterTitle" aria-hidden="true">',
+        '<div class="modal-dialog modal-dialog-centered modal-lg" role="document">',
+        '<div class="modal-content">',
+        '<div class="modal-body p-4">',
+        '<div class="my-3 p-4">',
+        '<div class="row">',
+        '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true">',
+        '<div class="d-flex flex-column justify-content-center align-items-center">',
+        '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
+        trechoHtml,
+        '</div>',
+        '</div>',
+        '</div>',
+        '</div>',
+        '<div class="d-flex justify-content-end">',
+        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Qanelas;">OK</button>',
+        '</div>',
+        '</div>',
+        '</div>',
+        '</div>',
+        '</div>'
+    ]
+    return $(modalTemplate.join(''));
+}
 // DISPUTAS
 /**************************************************************************************** */
 
@@ -960,15 +1004,15 @@ function createModalDisputa(processo) {
         '<div class="my-3 p-4">',
         '<div class="row">',
         '<div class="<div class="col-md-3" data-toggle="tooltip" data-placement="top" id="tooltip-datas" data-html="true"',
-        'title="', "<p>Fim Recebimento: " + processo.disputa + "</p>"
-        + "<p>Início Análise Proposta: " + processo.fim_recprop + "</p>"
-        + "<p>Fim Análise Proposta: " + processo.ini_aberprop + "</p>"
-        + "<p>Início da Disputa: " + processo.fim_aberprop, '</p>">',
+        'title="', "<p>Fim Recebimento: " + processo.fim_recprop + "</p>"
+        + "<p>Início Análise Proposta: " + processo.ini_aberprop + "</p>"
+        + "<p>Fim Análise Proposta: " + processo.fim_aberprop + "</p>"
+        + "<p>Início da Disputa: " + processo.disputa, '</p>">',
         '<div class="d-flex flex-column justify-content-center align-items-center">',
         '<img src = "./img/União 1.svg" width = "55" height="55" class="ml-2">',
         '<p class="font-weight-bold">', 'Início da disputa', '</p>',
-        '<p>', processo.data_publicacao.substring(0, 10), '</p>',
-        '<p>', processo.data_publicacao.substring(11, 16), '</p>',
+        '<p>', processo.disputa.substring(0, 10), '</p>',
+        '<p>', processo.disputa.substring(11, 16), '</p>',
         '</div>',
         '</div>',
         '<div class="col-md-3">',
