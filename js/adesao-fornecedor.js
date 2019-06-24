@@ -10,10 +10,9 @@ let documentosSocio = document.getElementById('documentosSocio');
 var segments = [];
 var segmentosEscolhidos = $();
 var escolhasSegmentos = [];
-var tipoFornecedor = '';
 var societarios = $();
 
-var filesUploads = []
+var filesUploads = [];
 
 cpf.style.display = 'none';
 
@@ -167,7 +166,7 @@ $('#inputDocumentosSocio').change(
  */
 
 $.getJSON({
-  url: 'https://licitanet.com.br/licitanet_api_site/estados/buscar',
+  url: 'https://licitanet.com.br/licitanet_api_site/web/estados/buscar',
   type: 'GET',
   data: jQuery.param({
     token: window.localStorage.getItem('access_token')
@@ -175,9 +174,9 @@ $.getJSON({
   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
   success: function (response) {
     $('#estados').append('<select onchange="carregaCidadesEstado(this.value);" id="estado" class="form-control"></select>');
-    carregaCidadesEstado('AC1');
+    carregaCidadesEstado('AC');
     $.each(response.data, function (index) {
-      $('#estado').append('<option value="' + response.data[index].uf + response.data[index].id + '">' + response.data[index].nome
+      $('#estado').append('<option value="' + response.data[index].uf + '">' + response.data[index].nome
         + '</option>');
     });
 
@@ -192,11 +191,11 @@ $.getJSON({
 
 function carregaCidadesEstado(idEstado) {
   $.getJSON({
-    url: 'https://licitanet.com.br/licitanet_api_site/cidade/buscar',
+    url: 'https://licitanet.com.br/licitanet_api_site/web/cidade/buscar',
     type: 'POST',
     data: jQuery.param({
       token: window.localStorage.getItem('access_token'),
-      estado: (idEstado.length == 4) ? idEstado.toString().substring(2, 4) : idEstado.toString().substring(2, 3)
+      estado: idEstado
     }),
     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     success: function (response) {
@@ -208,8 +207,6 @@ function carregaCidadesEstado(idEstado) {
           + '</option>');
       });
 
-    },
-    error: function () {
     }
   });
 }
@@ -221,7 +218,7 @@ function removerAcentos(s) {
     function (a) {
       return map[a] || a
     })
-};
+}
 
 /**
  * Função responsável por buscar o cnpj e inserir os dados de cadastro no formulário.
@@ -233,22 +230,15 @@ function buscaDadosCnpj(cnpj) {
     crossDomain: true,
     dataType: 'jsonp',
     success: function (json) {
+      carregaCidadesEstado(json.uf);
 
-      console.log(json);
-      $.map($('#estados option'), function (option) {
-        if (option.value.includes(json.uf)) {
-          $("#estados select").val(option.value);
-          carregaCidadesEstado(option.value);
-
-          setTimeout(function () {
-            $.map($('#cidades option'), function (option1) {
-              if (removerAcentos(option1.text).toString().toLowerCase() == removerAcentos(json.municipio).toString().toLowerCase()) {
-                $("#cidades select").val(option1.value);
-              }
-            });
-          }, 1000);
-        }
-      });
+      setTimeout(function () {
+        $.map($('#cidades option'), function (option1) {
+          if (removerAcentos(option1.text).toString().toLowerCase() == removerAcentos(json.municipio).toString().toLowerCase()) {
+            $("#cidades select").val(option1.value);
+          }
+        });
+      }, 1000);
 
       switch (json.porte) {
         case "MICRO EMPRESA":
@@ -278,20 +268,20 @@ function buscaDadosCnpj(cnpj) {
       $("#logradouro").val(json.logradouro);
       $("#numero").val(json.numero);
       $("#complemento").val(json.complemento);
-      $("#naturezaJuridica").val(json.natureza_juridica)
+      $("#naturezaJuridica").val(json.natureza_juridica);
       $("#bairro").val(json.bairro);
       $("#telefoneFixo").val(json.telefone);
+      $("#estado").val(json.uf);
       societarios = $();
-      if (json.qsa.length === 0) {
-        societarios = societarios.add(createdSocietario(null));
-      } else
+      if (json.qsa.length > 0) {
         json.qsa.forEach(function (item, i) {
           societarios = societarios.add(createdSocietario(item));
         });
 
-      $('#quadroSocietario').empty().append(societarios);
-
-      $('.cpf-socio').mask('000.000.000-00', { reverse: true });
+        $('#header-qsa').show();
+        $('#quadroSocietario').empty().append(societarios);
+        $('.cpf-socio').mask('000.000.000-00', { reverse: true });
+      }
     }, error: function (e) {
       console.error(e);
     },
@@ -310,7 +300,7 @@ function buscaDadosCnpj(cnpj) {
 function createdSocietario(qsa) {
   societarioTemplate = [
     '<div class="col-12 mt-4">',
-    '<label for="representanteLegal">Nome do representante legal</label>',
+    '<label for="representanteLegal">Nome do Sócio</label>',
     '<input type="text" id="representanteLegal" class="form-control nomeRepresentanteLegal" value="', (qsa != null) ? qsa.nome : '' || '', '" placeholder="Informe"></div>',
     '<div class="col-md-3 mt-4">',
     '<label for="socioCpf">CPF *</label>',
@@ -327,7 +317,7 @@ function createdSocietario(qsa) {
  */
 
 $.ajax({
-  url: 'https://licitanet.com.br/licitanet_api_site/segmentos/buscar',
+  url: 'https://licitanet.com.br/licitanet_api_site/web/segmentos/buscar',
   type: 'GET',
   data: jQuery.param({
     token: window.localStorage.getItem('access_token')
@@ -420,11 +410,11 @@ $("#adicionarSegmento").click(function () {
  */
 $(document).ready(function ($) {
   $('.cnpj-fornecedor').mask('00.000.000/0000-00', { reverse: true });
-  $('.telefone-fixo').mask('(00) 0000-0000');
+  $('.telefone-fixo').mask('(00)0000-0000');
   $('.cep-fornecedor').mask('00.000-000');
   $('.cpf-fornecedor').mask('000.000.000-00', { reverse: true });
   $('.cpfRepresentante').mask('000.000.000-00', { reverse: true });
-  $('.telefone-celular').mask('(00) 9 0000-0000');
+  $('.telefone-celular').mask('(00)90000-0000');
 })
 
 /***
@@ -447,7 +437,7 @@ $(function () {
 
 $("#btnConcluir").click(function () {
   var token = window.localStorage.getItem('access_token');
-  var tipo = $('#tipoFornecedor').val() == 1 ? 'j' : 'f';
+  var tipo = $('#tipoFornecedor').val() == 1 ? 'J' : 'F';
   var num_documento = $('#tipoFornecedor').val() == 1 ? $('.cnpj-fornecedor').val() : $('.cpf-fornecedor').val();
   var enquadramento = $("input[name='tipoEmpresa']:checked").val();
   var microempresa = $("input[name='tipoEmpresa']:checked").val() != "ME" ? 0 : 1;
@@ -464,12 +454,12 @@ $("#btnConcluir").click(function () {
   var telefone_fixo = $('#telefoneFixo').val();
   var email = $('#email').val();
   var usuario = $('#nomeUsuario').val();
-  var senha = $('#senhaUsuario').val();
-  var celular = $('#celular').val();
+  var senha = btoa($('#senhaUsuario').val());
+  var celular = $('#telefoneCelular').val();
   var natureza_juridica = $('#naturezaJuridica').val();
   var nomeRepresentante = $('#nomeRepresentante').val();
   var cpfRepresentante = $('#cpfRepresentante').val();
-  var plano = $("input[name='plano']:checked").val() == '' ? "0" : $("input[name='plano']:checked").val();
+  var plano = $("input[name='plano']:checked").val() == '' ? null : $("input[name='plano']:checked").val();
 
   validaCampos();
 
@@ -494,122 +484,82 @@ $("#btnConcluir").click(function () {
       $(divTipoSociedadeRepresentantes[i]).removeClass('is-invalid');
   }
 
-  var prazo_contrato = plano;
+  var listFornecedoresQsa = [];
+  var qsa = {
+    tipo: "",
+    cpf: "",
+    nome: ""
+  };
+  for (i = 0; i < divCpfRepresentantes.length; i++) {
+    qsa.tipo = divTipoSociedadeRepresentantes[i].value;
+    qsa.cpf = divCpfRepresentantes[i].value;
+    qsa.nome = divNomesRepresentantes[i].value;
+    listFornecedoresQsa[i] = qsa;
+  }
+
   var formData = new FormData();
+  formData.append('token', token);
+  formData.append("tipo", tipo);
+  formData.append("num_documento", num_documento);
+  formData.append("enquadramento", enquadramento);
+  formData.append("microempresa", microempresa);
+  formData.append("razao_social", razao_social);
+  formData.append("fantasia", fantasia);
+  formData.append("cep", cep);
+  formData.append("endereco", endereco);
+  formData.append("numero", numero);
+  formData.append("complemento", complemento);
+  formData.append("bairro", bairro);
+  formData.append("cidade", cidade);
+  formData.append("estado", estado);
+  formData.append("site", site);
+  formData.append("telefone_fixo", telefone_fixo);
+  formData.append("nome_representante", nomeRepresentante);
+  formData.append("cpf_representante", cpfRepresentante);
+  formData.append("celular", celular);
+  formData.append("email", email);
+  formData.append("usuario", usuario);
+  formData.append("senha", senha);
+  formData.append("prazo_contrato", plano);
+  formData.append("natureza_juridica", natureza_juridica);
 
-  if (plano == "0") {
-    alert("Escolha um plano");
-  } else
+  escolhasSegmentos.forEach(function (segmento, i) {
+    formData.append('segmento[]', segmento.codigo);
+  });
 
-    if (document.getElementsByClassName("is-invalid").length == 0) {
-      var listFornecedoresQsa = [];
-      var qsa = {
-        tipo: "",
-        cpf: "",
-        nome: ""
-      };
-      for (i = 0; i < divCpfRepresentantes.length; i++) {
-        qsa.tipo = divTipoSociedadeRepresentantes[i].value;
-        qsa.cpf = divCpfRepresentantes[i].value;
-        qsa.nome = divNomesRepresentantes[i].value;
-        listFornecedoresQsa[i] = qsa;
+  if (filesUploads.length > 0) {
+    $.each(filesUploads, function (i, file) {
+      formData.append('arquivos[]', file);
+    });
+  }
+
+  if (listFornecedoresQsa.length > 0) {
+    $.each(listFornecedoresQsa, function (i, fornecedor) {
+      formData.append('fornecedor_qsa[' + i + '][cpf]', fornecedor.cpf);
+      formData.append('fornecedor_qsa[' + i + '][nome]', fornecedor.nome);
+      formData.append('fornecedor_qsa[' + i + '][tipo]', fornecedor.tipo);
+    });
+  }
+
+  $.ajax({
+    url: 'https://licitanet.com.br/licitanet_api_site/web/fornecedor/salvar',
+    data: formData,
+    type: 'POST',
+    dataType: 'JSON',
+    cache: false,
+    contentType: false,
+    processData: false,
+    beforeSend: function () {
+    },
+    success: function (response) {
+      if (response.tip_msg === "success") {
+        chamaModalSucess(email);
       }
-
-      var segmentos = [];
-      escolhasSegmentos.forEach(function (segmento, i) {
-        segmentos.push(segmento);
-      });
-
-
-
-      formData.append('token', token);
-      formData.append("tipo", tipo);
-      formData.append("num_documento", num_documento);
-      formData.append("enquadramento", enquadramento);
-      formData.append("microempresa", microempresa);
-      formData.append("razao_social", razao_social);
-      formData.append("fantasia", fantasia);
-      formData.append("cep", cep);
-      formData.append("endereco", endereco);
-      formData.append("numero", numero);
-      formData.append("complemento", complemento);
-      formData.append("bairro", bairro);
-      formData.append("cidade", cidade);
-      formData.append("estado", (estado.length == 4) ? estado.toString().substring(2, 4) : estado.toString().substring(2, 3));
-      formData.append("site", site);
-      formData.append("telefone_fixo", telefone_fixo);
-      formData.append("nome_representante", nomeRepresentante);
-      formData.append("cpf_representante", cpfRepresentante);
-      formData.append("celular", celular);
-      formData.append("email", email);
-      formData.append("usuario", usuario);
-      formData.append("senha", senha);
-      formData.append("prazo_contrato", prazo_contrato);
-      formData.append("natureza_juridica", natureza_juridica);
-      // formData.append("fornecedor_qsa", listFornecedoresQsa);
-      // formData.append("segmento", segmento);
-
-
-      var allFornecedoresQsa = new Array();
-      listFornecedoresQsa.forEach(function (fornecedor, i) {
-        // formData.append('fornecedor_qsa[' + i + '][tipo]', fornecedor.tipo);
-        // formData.append('fornecedor_qsa[' + i + '][cpf]', fornecedor.cpf);
-        // formData.append('fornecedor_qsa[' + i + '][nome]', fornecedor.nome);
-        var aux = new FornecedorQsa(fornecedor.tipo, fornecedor.cpf, fornecedor.nome)
-        allFornecedoresQsa[i] = (aux);
-        // formData.append('fornecedor_qsa', fornecedor);
-      })
-
-      formData.append('fornecedor_qsa', listFornecedoresQsa);
-
-      segs = [];
-      segmentos.forEach(function (segmento, i) {
-        // formData.append('segmento[' + i + ']', segmento);     
-        segs.push(segmento.codigo);
-      })
-
-      formData.append('segmento', segs);
-
-      filesUploads.forEach(function (file, i) {
-        // formData.append('arquivos['+ i+']', file);
-        // formData.append('arquivos[]', file);
-      })
-
-      formData.append('arquivos', filesUploads);
-
-      console.log(JSON.stringify(allFornecedoresQsa));
-
-
-      var object = {};
-      formData.forEach((value, key) => { object[key] = value });
-      var json = JSON.stringify(object);
-      console.log(json);
-
-      var codEstado = (estado.length == 4) ? estado.toString().substring(2, 4) : estado.toString().substring(2, 3);
-
-      $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/fornecedor/salvar',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        beforeSend: function () {
-        },
-        success: function (response) {
-          if (response.tip_msg == "success") {
-            console.log(data);
-
-            chamaModalSucess(email);
-          }
-        },
-        error: function (e) {
-          console.log(e);
-
-        }
-      });
-    } else {
-      alert("Preencha Todos os campos obrigatórios");
+    },
+    error: function (e) {
+      chamaModalError(e.responseJSON.msg);
     }
-
+  });
 });
 
 function validaCampos() {
@@ -635,15 +585,14 @@ function validaCampos() {
 
   $("#bairro").val() == '' ? $('#bairro').addClass('is-invalid') : $('#bairro').removeClass('is-invalid');
 
-  var returnFixo = $("#telefoneFixo").val();
-  (returnFixo.toString().length != 14) ? $('#telefoneFixo').addClass('is-invalid') : $('#telefoneFixo').removeClass('is-invalid');
+  var returnFixo = $("#telefoneFixo").val().replace(/\s/g,'');
+  (returnFixo.toString().length != 13) ? $('#telefoneFixo').addClass('is-invalid') : $('#telefoneFixo').removeClass('is-invalid');
 
   $("#email").val() == '' ? $('#email').addClass('is-invalid') : $('#email').removeClass('is-invalid');
 
-  var returnCelular = $("#telefoneCelular").val();
+  var returnCelular = $("#telefoneCelular").val().replace(/\s/g,'');
 
-
-  (returnCelular.toString().length < 16 || returnCelular.toString().charAt(5) != '9') ? $('#telefoneCelular').addClass('is-invalid') : $('#telefoneCelular').removeClass('is-invalid');
+  (returnCelular.toString().length < 14 || returnCelular.toString().charAt(5) != '9') ? $('#telefoneCelular').addClass('is-invalid') : $('#telefoneCelular').removeClass('is-invalid');
 
   $("#nomeUsuario").val() == '' ? $('#nomeUsuario').addClass('is-invalid') : $('#nomeUsuario').removeClass('is-invalid');
 
@@ -746,6 +695,22 @@ function chamaModalSucess(email) {
   $('#text-email-modal').empty().append(emailModal);
   $('#btnConcluir').attr('data-toggle', 'modal');
   $('#btnConcluir').attr('data-target', '#modalConcluirAdesao');
+  $('#modalConcluirAdesao').modal('show');
+}
+
+function chamaModalError(msg) {
+    var modal = $().add(createModalError(msg));
+    $('#text-error-modal').html(modal);
+    $('#modalErrorAdesao').modal('show');
+}
+
+function createModalError(msg){
+  modalTemplate = [
+    '<p class="mt-5 qanelas text-center">',
+    msg,
+    '</p>'
+  ];
+  return $(modalTemplate.join(''));
 }
 
 $("#open-whatsapp").click(function () {
@@ -767,11 +732,3 @@ $("#open-facebook").click(function () {
   var go_to_url = "https://www.facebook.com/licitanet"
   window.open(go_to_url, '_blank');
 });
-
-class FornecedorQsa {
-  constructor(tipo, cpf, nome) {
-    this.tipo = tipo;
-    this.cpf = cpf;
-    this.nome = nome;
-  }
-}

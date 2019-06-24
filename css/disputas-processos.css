@@ -197,6 +197,10 @@ footer .btn-link {
   font-size: 14px;
 }
 
+.imgUrlDisputa {
+  cursor: pointer;
+}
+
 @media (max-width: 991.98px) {
   ul#processosDisputas li a {
     font-size: 32px !important;

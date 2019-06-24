@@ -3,11 +3,11 @@ var labelsNames = [];
 var labelsValorOrcado = [];
 var labelsSomaLances = [];
 
-$.getJSON("https://licitanet.com.br/licitanet_api_site/token/gerar", function (json) {
+$.getJSON("https://licitanet.com.br/licitanet_api_site/web/token/gerar", function (json) {
     var tokenReceived = json;
 
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/relatorios/economia',
+        url: 'https://licitanet.com.br/licitanet_api_site/web/relatorios/economia',
         type: 'GET',
         data: jQuery.param({
             token: tokenReceived
