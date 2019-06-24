@@ -260,7 +260,7 @@
                 </div>
               </div>
 
-              <h3 class="mt-5">
+              <h3 class="mt-5" id="header-qsa" style="display: none;">
                 Quadro societário
               </h3>
               <div class="form-row mt-4" id="quadroSocietario"></div>
@@ -419,10 +419,10 @@
       </h3>
       <div class="form-row mt-4">
         <div class="col-lg-3">
-          <div id="plano30dias" class="plano">
+          <div id="plano30dias" class="plano planoSelecionado">
             <div class="d-flex justify-content-end">
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="30dias" name="plano" value="30" class="custom-control-input">
+                <input checked type="radio" id="30dias" name="plano" value="30" class="custom-control-input">
                 <label class="custom-control-label text-uppercase" for="30dias">
                 </label>
               </div>
@@ -481,12 +481,6 @@
         </div>
       </div>
 
-      <!-- <p class="mt-5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sequi cumque iusto, neque dolores facilis
-        consectetur possimus voluptates perspiciatis eaque fugiat. Eveniet, nam necessitatibus voluptatem velit fuga et!
-        Praesentium, distinctio.
-      </p> -->
-
       <div class="d-flex justify-content-end mt-5">
 
         <button type="button" class="btn buttonForm concluirButton btn-primary" id="btnConcluir">Concluir adesão</button>
@@ -504,7 +498,7 @@
           <h2 style="font-size: 32px;" class="montserrat textoAzul text-center font-weight-bold text-uppercase">Cadastro
             realizado com sucesso!</h2>
 
-          <p class="mt-5 qanelas text-center">
+          <p class="mt-5 qanelas text-center" id="text-email-modal">
             Verifique seu e-mail, foi enviado para <strong class="textoAzul">exemplo@email.com</strong> maiores
             informações
             <br>
@@ -515,6 +509,25 @@
             <button type="button" style="border-radius: 20px;"
               class="btn btn-primary font-weight-bold text-uppercase concluirButton"
               data-dismiss="modal">Confirmar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalErrorAdesao" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h2 style="font-size: 32px;" class="montserrat textoVermelho text-center font-weight-bold text-uppercase">
+            Erro ao realizar cadastro!</h2>
+          <p class="mt-5 qanelas text-center" id="text-error-modal"></p>
+          <div class="d-flex justify-content-end mt-5">
+            <button type="button" style="border-radius: 20px;"
+                    class="btn btn-danger font-weight-bold text-uppercase concluirButton"
+                    data-dismiss="modal">Confirmar
+            </button>
           </div>
 
         </div>
@@ -684,6 +697,34 @@
   <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="js/adesao-fornecedor.js"></script>
+  <div id="asc_sac_chat" style="display:none">
+    <script type="text/javascript">
+      var ascChatUrl = "https://sac-licitanet.ascbrazil.com.br/Chat";
+      var ascChatTitulo = "Fale Conosco";
+      var ascChatVarComplementar = "";
+      var ascTema = "tema_4f9b1505333878234";
+      var ascLanguage = "pt-BR";
+      var ascRobo = "0";</script>
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/chat/chatInline.js"></script>
+    <link rel="stylesheet" href="https://sac-licitanet.ascbrazil.com.br/public/chat/ascChatInline.css">
+  </div>
+
+  <div id="asc_sac" style="display:none">
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.js"></script>
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.list.js"></script>
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.set.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      var url_socket_asc = "https://sac-licitanet.ascbrazil.com.br";
+      var ascUrlSac = "https://sac-licitanet.ascbrazil.com.br";
+      var ascVar1 = 1;
+      var ascVar2 = 1;
+    </script>
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/Painel/public/js/templates/socket.io.js"></script>
+    <script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/site_visitantes/visitante.js"></script>
+  </div>
 </body>
 
 </html>

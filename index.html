@@ -46,11 +46,30 @@
 							<a class="nav-link" href="#grafico">Gráfico</a>
 						</li>
 						<li class="nav-item">
-							<a href="https://licitanet.com.br/pe/index.php">
-								<button
-									class="nav-link btn btn-primary text-white sistemaButton font-weight-bold text-uppercase"
-									type="button">Acessar sistema</button>
+							<a href="pe/index.php">
+								<!--<button-->
+									<!--class="nav-link btn btn-primary text-white sistemaButton font-weight-bold text-uppercase" data-toggle="modal" data-target=".aviso-manutencao"-->
+									<!--type="button">Acessar sistema</button>-->
+									<button
+										class="nav-link btn btn-primary text-white sistemaButton font-weight-bold text-uppercase"
+										type="button">Acessar sistema</button>
 							</a>
+
+							<div class="modal fade aviso-manutencao" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div class="alert alert-danger text-uppercase" role="alert">
+												sistema em manuteção
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</li>
 					</ul>
 				</div>
@@ -478,6 +497,34 @@
 	<script src="node_modules/chart.js/dist/Chart.min.js"></script>
 	<script src="js/charts.js"></script>
 	<script src="js/home-landing.js"></script>
+	<div id="asc_sac_chat" style="display:none">
+		<script type="text/javascript">
+			var ascChatUrl = "https://sac-licitanet.ascbrazil.com.br/Chat";
+			var ascChatTitulo = "Fale Conosco";
+			var ascChatVarComplementar = "";
+			var ascTema = "tema_4f9b1505333878234";
+			var ascLanguage = "pt-BR";
+			var ascRobo = "0";</script>
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/chat/chatInline.js"></script>
+		<link rel="stylesheet" href="https://sac-licitanet.ascbrazil.com.br/public/chat/ascChatInline.css">
+	</div>
+
+	<div id="asc_sac" style="display:none">
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.js"></script>
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.list.js"></script>
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/basil/src/basil.set.js"></script>
+		<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>
+		<![endif]-->
+		<script type="text/javascript">
+			var url_socket_asc = "https://sac-licitanet.ascbrazil.com.br";
+			var ascUrlSac = "https://sac-licitanet.ascbrazil.com.br";
+			var ascVar1 = 1;
+			var ascVar2 = 1;
+		</script>
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/Painel/public/js/templates/socket.io.js"></script>
+		<script type="text/javascript" src="https://sac-licitanet.ascbrazil.com.br/public/js/site_visitantes/visitante.js"></script>
+	</div>
 </body>
 
 </html>
