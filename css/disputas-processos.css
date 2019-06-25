@@ -42,7 +42,7 @@ ul#tipoProcesso li a.active, ul#tipoDisputa li a.active {
 
 ul#tipoProcesso li a, ul#tipoDisputa li a {
   color: #717171 !important;
-  font-family: Qanelas;
+  font-family: Poppins;
   font-weight: bold;
   text-transform: uppercase;
   border: 2px solid #717171;
@@ -66,7 +66,7 @@ main {
   padding: 15px 30px !important;
   text-transform: uppercase;
   padding-right: 0 !important;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 #header {
@@ -78,13 +78,13 @@ main {
   padding: 5px 30px !important;
   border-radius: 35px !important;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 .box {
   border-radius: 20px;
   background: #fff !important;
-  font-family: Qanelas !important;
+  font-family: Poppins !important;
   box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.16);
 }
 
@@ -92,7 +92,7 @@ main {
 .buttonForm {
   border-radius: 25px !important;
   height: 50px !important;
-  font-family: Qanelas !important;
+  font-family: Poppins !important;
 }
 
 .selectRelatorios {
@@ -121,7 +121,7 @@ main {
 }
 
 ul.pagination li {
-  font-family: Qanelas;
+  font-family: Poppins;
   border: 2px solid #717171;
   border-radius: 5px;
   text-align: center;
@@ -186,11 +186,11 @@ ul.pagination .no-border {
 .descricaoRodape {
   font-size: 16px;
   color: #717171;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 footer .btn-link {
-  font-family: Qanelas;
+  font-family: Poppins;
   color: #717171 !important;
   text-transform: uppercase;
   font-weight: bold;
