@@ -358,7 +358,7 @@ function createSegment(segmento) {
  */
 function createModalEmail(email) {
   emailTemplate = [
-    '<p class="mt-5 qanelas text-center">',
+    '<p class="mt-5 poppins text-center">',
     'Verifique seu e-mail, foi enviado para <strong class="textoAzul">', email, '</strong> maiores informações',
     '<br>',
     'sobre o andamento do seu cadastro!',

@@ -696,7 +696,7 @@ function createModal(processo) {
         '</div>',
         '</div>',
         '<div class="d-flex justify-content-end">',
-        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Qanelas;">OK</button>',
+        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Poppins;">OK</button>',
         '</div>',
         '</div>',
         '</div>',
@@ -721,7 +721,8 @@ function openUrl(url) {
         diretorios.forEach(function (url, i) {
             if (url != "") {
                 var nameFile = nomes[i];
-                links = links + '<div class="mt-2 d-flex justify-content-center align-items-center"><img src="./img/arquivos.svg" height="30" class="mr-2"><p class="qanelas"><a href="' + url + '" download">' + nameFile + '</a></p></div>' + "\n";
+                links = links + '<div class="mt-2 d-flex justify-content-center align-items-center"><img src="./img/arquivos.svg" height="30" class="mr-2"><p class="poppins"><a href="' + url + '" target="_self">' + nameFile + '</a></p></div>' + "\n";
+
             }
 
         });
@@ -748,7 +749,7 @@ function createModalDonwload(trechoHtml) {
         trechoHtml,
         '</div>',
         '<div class="d-flex justify-content-end mt-4">',
-        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Qanelas;">OK</button>',
+        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Poppins;">OK</button>',
         '</div>',
         '</div>',
         '</div>',
@@ -1047,7 +1048,7 @@ function createModalDisputa(processo) {
         '</div>',
         '</div>',
         '<div class="d-flex justify-content-end">',
-        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Qanelas;">OK</button>',
+        '<button data-dismiss="modal" class="btn btn-primary text-uppercase font-weight-bold" style="border-radius: 20px; padding: 5px 30px !important; width: 130px;font-family: Poppins;">OK</button>',
         '</div>',
         '</div>',
         '</div>',

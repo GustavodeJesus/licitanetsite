@@ -8,7 +8,7 @@
 }
 
 #navbar li {
-  font-family: Qanelas;
+  font-family: Poppins;
   padding: 15px 0 15px 30px !important;
   text-transform: uppercase;
 }
@@ -37,7 +37,7 @@
 .sistemaButton {
   border-radius: 35px !important;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.16);
-  font-family: Qanelas;
+  font-family: Poppins;
   padding: 5px 30px !important;
 }
 
@@ -67,11 +67,11 @@
 .descricaoRodape {
   font-size: 16px;
   color: #717171;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 footer .btn-link {
-  font-family: Qanelas;
+  font-family: Poppins;
   color: #717171 !important;
   text-transform: uppercase;
   font-weight: bold;

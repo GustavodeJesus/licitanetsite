@@ -20,7 +20,7 @@ section#adesoes button {
   padding: 15px 35px !important;
   border-radius: 35px;
   width: 90%;
-  font-family: Qanelas;
+  font-family: Poppins;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -30,7 +30,7 @@ section#planos ul {
 }
 
 section#planos li {
-  font-family: Qanelas;
+  font-family: Poppins;
   vertical-align: middle;
   font-size: 18px;
   list-style-type: none;
@@ -59,13 +59,13 @@ section#planos li:before {
 .headerButton {
   padding: 15px 25px !important;
   border-radius: 35px !important;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 .sistemaButton {
   padding: 5px 30px !important;
   border-radius: 35px !important;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 .planosButton {
@@ -73,7 +73,7 @@ section#planos li:before {
   border-radius: 35px !important;
   width: 80%;
   color: #fff !important;
-  font-family: Qanelas;
+  font-family: Poppins;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -83,13 +83,13 @@ section#planos li:before {
   border-radius: 35px !important;
   width: 80%;
   color: #fff !important;
-  font-family: Qanelas;
+  font-family: Poppins;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 #avisos {
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 .avisoBox {
@@ -139,7 +139,7 @@ section#grafico {
   padding: 15px 20px !important;
   text-transform: uppercase;
   padding-right: 0 !important;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 #navbar li a {
@@ -238,11 +238,11 @@ div.thumbnailLayer:hover a.start-video img {
 .descricaoRodape {
   font-size: 16px;
   color: #717171;
-  font-family: Qanelas;
+  font-family: Poppins;
 }
 
 footer .btn-link {
-  font-family: Qanelas;
+  font-family: Poppins;
   color: #717171 !important;
   text-transform: uppercase;
   font-weight: bold;
