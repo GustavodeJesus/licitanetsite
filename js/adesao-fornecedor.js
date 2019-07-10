@@ -28,6 +28,54 @@ function trocaTipoFornecedor(value) {
   }
 }
 
+// função pra ler querystring
+function queryString(parameter) {
+  var loc = location.search.substring(1, location.search.length);
+  var param_value = false;
+  var params = loc.split("&");
+  for (i = 0; i < params.length; i++) {
+    param_name = params[i].substring(0, params[i].indexOf('='));
+    if (param_name == parameter) {
+      param_value = params[i].substring(params[i].indexOf('=') + 1)
+    }
+  }
+  if (param_value) {
+    return param_value;
+  }
+  else {
+    return undefined;
+  }
+}
+
+var optionSelected = queryString("p");
+switch (optionSelected) {
+  case "1":
+    $('#30dias').prop("checked", true);
+    plano30dias.className += ' planoSelecionado';
+    break;
+
+  case "2":
+    $('#90dias').prop("checked", true);
+    plano90dias.className += ' planoSelecionado';
+    break;
+
+  case "3":
+    $('#180dias').prop("checked", true);
+    plano180dias.className += ' planoSelecionado';
+    break;
+
+  case "4":
+    $('#365dias').prop("checked", true);
+    plano365dias.className += ' planoSelecionado';
+    break;
+
+  default:
+    $('#30dias').prop("checked", true);
+    plano30dias.className += ' planoSelecionado';
+    break;
+}
+
+
 $('input[name=plano]').change(function () {
   plano30dias.className = plano30dias.className.replace(' planoSelecionado', '');
   plano90dias.className = plano90dias.className.replace(' planoSelecionado', '');
@@ -109,7 +157,6 @@ $('#buttonContratoSocial').click(
     $('#inputContratoSocial').click();
   }
 )
-
 $('#inputCNPJ').change(
   function () {
     var names = [];
@@ -127,6 +174,7 @@ $('#inputCNPJ').change(
   }
 )
 
+
 $('#inputContratoSocial').change(
   function () {
     var names = [];
@@ -143,6 +191,7 @@ $('#inputContratoSocial').change(
     contratoSocial.value = names;
   }
 )
+
 
 $('#inputDocumentosSocio').change(
   function () {
@@ -166,7 +215,7 @@ $('#inputDocumentosSocio').change(
  */
 
 $.getJSON({
-  url: 'https://licitanet.com.br/licitanet_api_site/web/estados/buscar',
+  url: 'https://api-site.licitanet.com.br/web/estados/buscar',
   type: 'GET',
   data: jQuery.param({
     token: window.localStorage.getItem('access_token')
@@ -191,7 +240,7 @@ $.getJSON({
 
 function carregaCidadesEstado(idEstado) {
   $.getJSON({
-    url: 'https://licitanet.com.br/licitanet_api_site/web/cidade/buscar',
+    url: 'https://api-site.licitanet.com.br/web/cidade/buscar',
     type: 'POST',
     data: jQuery.param({
       token: window.localStorage.getItem('access_token'),
@@ -317,7 +366,7 @@ function createdSocietario(qsa) {
  */
 
 $.ajax({
-  url: 'https://licitanet.com.br/licitanet_api_site/web/segmentos/buscar',
+  url: 'https://api-site.licitanet.com.br/web/segmentos/buscar',
   type: 'GET',
   data: jQuery.param({
     token: window.localStorage.getItem('access_token')
@@ -435,6 +484,9 @@ $(function () {
  * 
  */
 
+
+
+
 $("#btnConcluir").click(function () {
   var token = window.localStorage.getItem('access_token');
   var tipo = $('#tipoFornecedor').val() == 1 ? 'J' : 'F';
@@ -464,7 +516,7 @@ $("#btnConcluir").click(function () {
   validaCampos();
 
   let divNomesRepresentantes = document.getElementsByClassName("nomeRepresentanteLegal");
-  let divCpfRepresentantes = document.getElementsByClassName("cpfRepresentanteLegal");
+  var divCpfRepresentantes = document.getElementsByClassName("cpfRepresentanteLegal");
   let divTipoSociedadeRepresentantes = document.getElementsByClassName("tipoSociedadeRepresentanteLegal");
 
   for (i = 0; i < divNomesRepresentantes.length; i++) {
@@ -542,7 +594,7 @@ $("#btnConcluir").click(function () {
   }
 
   $.ajax({
-    url: 'https://licitanet.com.br/licitanet_api_site/web/fornecedor/salvar',
+    url: 'https://api-site.licitanet.com.br/web/fornecedor/salvar',
     data: formData,
     type: 'POST',
     dataType: 'JSON',
@@ -554,6 +606,7 @@ $("#btnConcluir").click(function () {
     success: function (response) {
       if (response.tip_msg === "success") {
         chamaModalSucess(email);
+        // limpaCampos(divCpfRepresentantes);
       }
     },
     error: function (e) {
@@ -585,12 +638,12 @@ function validaCampos() {
 
   $("#bairro").val() == '' ? $('#bairro').addClass('is-invalid') : $('#bairro').removeClass('is-invalid');
 
-  var returnFixo = $("#telefoneFixo").val().replace(/\s/g,'');
+  var returnFixo = $("#telefoneFixo").val().replace(/\s/g, '');
   (returnFixo.toString().length != 13) ? $('#telefoneFixo').addClass('is-invalid') : $('#telefoneFixo').removeClass('is-invalid');
 
   $("#email").val() == '' ? $('#email').addClass('is-invalid') : $('#email').removeClass('is-invalid');
 
-  var returnCelular = $("#telefoneCelular").val().replace(/\s/g,'');
+  var returnCelular = $("#telefoneCelular").val().replace(/\s/g, '');
 
   (returnCelular.toString().length < 14 || returnCelular.toString().charAt(5) != '9') ? $('#telefoneCelular').addClass('is-invalid') : $('#telefoneCelular').removeClass('is-invalid');
 
@@ -602,6 +655,38 @@ function validaCampos() {
 
   $("#nomeRepresentante").val() == '' ? $('#nomeRepresentante').addClass('is-invalid') : $('#nomeRepresentante').removeClass('is-invalid');
 
+}
+
+function limpaCampos(divCpfRepresentantes) {
+  $('.cnpj-fornecedor').val('')
+  $('.cpf-fornecedor').val('')
+  $("#razaoSocial").val('');
+  $("#nomeFantasia").val('');
+  $("#cep").val('');
+  $("#logradouro").val('');
+  $("#numero").val('');
+  $("#complemento").val('');
+  $("#bairro").val('');
+  $('#cidade').val('');
+  $('#estado').val('');
+  $('#site').val('');
+  $('#telefoneFixo').val('');
+  $('#email').val('');
+  $('#senhaUsuario').val('')
+  $('#telefoneCelular').val('');
+  $('#naturezaJuridica').val('');
+  $('#nomeRepresentante').val('');
+  $('#cpfRepresentante').val('');
+  $('#inputContratoSocial').val('');
+  $('#inputCNPJ').val('');
+  $('#inputDocumentosSocio').val('');
+  $('#segmentosEscolhidos').empty();
+
+  for (i = 0; i < divCpfRepresentantes.length; i++) {
+    divTipoSociedadeRepresentantes[i].value = '';
+    divCpfRepresentantes[i].value = '';
+    divNomesRepresentantes[i].value = '';
+  }
 }
 
 function calcDigitosPosicoes(digitos, posicoes = 10, soma_digitos = 0) {
@@ -699,12 +784,12 @@ function chamaModalSucess(email) {
 }
 
 function chamaModalError(msg) {
-    var modal = $().add(createModalError(msg));
-    $('#text-error-modal').html(modal);
-    $('#modalErrorAdesao').modal('show');
+  var modal = $().add(createModalError(msg));
+  $('#text-error-modal').html(modal);
+  $('#modalErrorAdesao').modal('show');
 }
 
-function createModalError(msg){
+function createModalError(msg) {
   modalTemplate = [
     '<p class="mt-5 qanelas text-center">',
     msg,

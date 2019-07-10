@@ -304,7 +304,7 @@ function getHomologados() {
 
 function postProcessosAguardandoHomologacao(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/aguardando-homologacao',
+        url: 'https://api-site.licitanet.com.br/processos/aguardando-homologacao',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -356,12 +356,11 @@ function postProcessosAguardandoHomologacao(params) {
 
 function postProcessosPublicados(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/publicados',
+        url: 'https://api-site.licitanet.com.br/processos/publicados',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        success: function (response) {
-
+        success: function (response) {            
             totalPagesPublicados = response.paginacao.ultima == 0 ? 1 : response.paginacao.ultima;
             listProcessos = [];
             if (response.data.length == 0) {
@@ -412,11 +411,12 @@ function postProcessosPublicados(params) {
 function postProcessosRevogados(params) {
 
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/desertos-revogados',
+        url: 'https://api-site.licitanet.com.br/processos/desertos-revogados',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         success: function (response) {
+            console.log(response);
 
             totalPagesRevogados = response.paginacao.ultima == 0 ? 1 : response.paginacao.ultima;
             listProcessos = [];
@@ -465,7 +465,7 @@ function postProcessosRevogados(params) {
 
 function postProcessosHomologados(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/homologados',
+        url: 'https://api-site.licitanet.com.br/processos/homologados',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -952,7 +952,7 @@ function getParamsDisputa(pagina) {
 
 function postEmDisputa(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/em-disputa',
+        url: 'https://api-site.licitanet.com.br/processos/em-disputa',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -1106,7 +1106,7 @@ function getAguardandoHomologacaoDisputa() {
 
 function postProcessosAguardandoHomologacaoDisputa(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/aguardando-homologacao',
+        url: 'https://api-site.licitanet.com.br/processos/aguardando-homologacao',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -1161,7 +1161,7 @@ function postProcessosAguardandoHomologacaoDisputa(params) {
 function postProcessosRevogadosDisputa(params) {
 
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/desertos-revogados',
+        url: 'https://api-site.licitanet.com.br/processos/desertos-revogados',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -1253,7 +1253,7 @@ function getRevogadosDisputa() {
 
 function postProcessosHomologadosDisputa(params) {
     $.ajax({
-        url: 'https://licitanet.com.br/licitanet_api_site/processos/homologados',
+        url: 'https://api-site.licitanet.com.br/processos/homologados',
         type: 'POST',
         data: jQuery.param(params),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

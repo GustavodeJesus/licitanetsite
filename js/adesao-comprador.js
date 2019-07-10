@@ -8,9 +8,6 @@ $(document).ready(function ($) {
   $('.telefone').mask('(00) 0000-0000');
 })
 
-
-
-
 /**
  * Cadastro e conclusão do Comprador
  * 
@@ -31,12 +28,12 @@ $("#btnConcluir").click(function () {
   $('#orgaoPublico').val().length <= 1 ? $('#orgaoPublico').addClass('is-invalid') : $('#orgaoPublico').removeClass('is-invalid');
 
   if (document.getElementsByClassName("is-invalid").length == 0) {
-    $.getJSON("https://licitanet.com.br/licitanet_api_site/token/gerar", function (json) {
+    $.getJSON("https://api-site.licitanet.com.br/token/gerar", function (json) {
       var tokenReceived = json;
 
       if (tokenReceived != "") {
         $.ajax({
-          url: 'https://licitanet.com.br/licitanet_api_site/contato/enviar',
+          url: 'https://api-site.licitanet.com.br/contato/enviar',
           type: 'POST',
           data: jQuery.param({
             token: tokenReceived,

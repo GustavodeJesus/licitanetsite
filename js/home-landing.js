@@ -7,7 +7,7 @@ var avisosDescricoes = [];
 /**
  * Função para Retornar o Token e chamar as noticias
  */
-$.getJSON("https://licitanet.com.br/licitanet_api_site/token/gerar", function (json) {
+$.getJSON("https://api-site.licitanet.com.br/token/gerar", function (json) {
     var tokenReceived = json;
     window.localStorage.setItem('access_token', json);
 
@@ -16,7 +16,7 @@ $.getJSON("https://licitanet.com.br/licitanet_api_site/token/gerar", function (j
  */
 
     $.getJSON({
-        url: 'https://licitanet.com.br/licitanet_api_site/noticias/buscar-ativas',
+        url: 'https://api-site.licitanet.com.br/noticias/buscar-ativas',
         type: 'GET',
         data: jQuery.param({
             token: tokenReceived
@@ -95,8 +95,20 @@ function createModal(titulo, texto) {
     return $(modalTemplate.join(''));
 }
 
-$('.planosButton').click(function (){
-    window.location = './adesao-fornecedor.html';
+$('.planosButton1').click(function (){
+    window.location = './adesao-fornecedor.html?p=1';
+});
+
+$('.planosButton2').click(function (){
+    window.location = './adesao-fornecedor.html?p=2';
+});
+
+$('.planosButton3').click(function (){
+    window.location = './adesao-fornecedor.html?p=3';
+});
+
+$('.planosButton4').click(function (){
+    window.location = './adesao-fornecedor.html?p=4';
 });
 
 $("#open-whatsapp").click(function () {
