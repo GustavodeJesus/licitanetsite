@@ -32,14 +32,18 @@ section#planos ul {
 section#planos li {
   font-family: Poppins;
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 14px;
   list-style-type: none;
 }
 
 section#planos li:before {
   content: url("../img/checked.svg");
   margin-left: -20px;
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.corAzul{
+  color: #3A85F7;
+  font-weight:bolder;
 }
 
 .box {
@@ -188,8 +192,8 @@ div.thumbnailLayer:hover a.start-video img {
 
 .avisoButtonFloat {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 5px;
+  left: 40px;
   text-align: center;
   z-index: 900;
 }
@@ -226,6 +230,16 @@ div.thumbnailLayer:hover a.start-video img {
     min-height: auto;
   }
 }
+/*.avisoTitulo{*/
+/*  min-height:auto;*/
+/*}*/
+/*.avisoDescricao{*/
+/*  min-height:auto;*/
+/*}*/
+.avisoBox{
+  min-height:310px;
+}
+
 
 .tituloRodape {
   font-weight: bold;

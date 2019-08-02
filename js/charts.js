@@ -3,11 +3,11 @@ var labelsNames = [];
 var labelsValorOrcado = [];
 var labelsSomaLances = [];
 
-$.getJSON("https://api-site.licitanet.com.br/web/token/gerar", function (json) {
+$.getJSON("https://api-site.licitanet.com.br/token/gerar", function (json) {
     var tokenReceived = json;
 
     $.ajax({
-        url: 'https://api-site.licitanet.com.br/web/relatorios/economia',
+        url: Utils.urlInicialAPI +'relatorios/economia',
         type: 'GET',
         data: jQuery.param({
             token: tokenReceived
@@ -15,7 +15,7 @@ $.getJSON("https://api-site.licitanet.com.br/web/token/gerar", function (json) {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         success: function (response) {
             var ctx = document.getElementById('myChart').getContext('2d');
-            console.log(response);
+
             response.data.forEach(function (item, i) {
                     labelsNames[i] = meses[Number(item.mes) - 1];
                     labelsValorOrcado.push(Number(item.valor_orcado));
@@ -80,6 +80,3 @@ $.getJSON("https://api-site.licitanet.com.br/web/token/gerar", function (json) {
     });
 
 });
-
-
-

@@ -96,6 +96,7 @@ li a {
   color: #dc3545 !important;
 }
 
+
 .btn-primary {
   color: #fff;
   background-color: #3a85f7 !important;
@@ -173,6 +174,10 @@ a.active {
   font-family: Montserrat;
   color: #717171;
 }
+.montserrat1 {
+  font-family: Montserrat;
+  color: #FEC52B;
+}
 
 .poppins {
   font-family: Poppins;
@@ -214,4 +219,14 @@ a.active {
   h1 {
     font-size: 32px !important;
   }
+}
+#planos1 {
+  background: url("../img/Reunião\ 1-image.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+#planosLayer1 {
+  background: url("../img/Retângulo\ 39.svg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
 }
